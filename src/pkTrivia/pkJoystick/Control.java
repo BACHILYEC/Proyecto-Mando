@@ -5,13 +5,13 @@ import java.io.IOException;
 public class Control {
     public Control() {
     };
-    
+
     public char MoveMenu() throws IOException {
- 
-        char[] opciones = {'a', 'b', 'c', 'd'};
+
+        char[] opciones = { 'a', 'b', 'c', 'd' };
 
         int indice = 0; // posición inicial (a)
- 
+
         while (true) {
 
             limpiarPantalla();
@@ -31,16 +31,16 @@ public class Control {
                 }
 
             }
- 
+
             System.out.println("\n\nUse ← → para moverse y ENTER para seleccionar.");
- 
+
             int tecla = System.in.read();
- 
+
             // Códigos que generan las flechas
 
-            if (tecla == 27) {          // ESC
+            if (tecla == 27) { // ESC
 
-                System.in.read();       // [
+                System.in.read(); // [
 
                 int direccion = System.in.read(); // 68 o 67
 
@@ -54,7 +54,7 @@ public class Control {
 
                 }
 
-            } 
+            }
 
             // ENTER
 

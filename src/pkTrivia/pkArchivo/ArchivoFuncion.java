@@ -25,11 +25,10 @@ public class ArchivoFuncion {
     // }
     // return PathFile;
     // }
-
-    public ArrayList<String> ReadFile(String PathFile) {
+    public ArrayList<String> readFile(String pathFile) {
 
         ArrayList<String> lineas = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(PathFile))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(pathFile))) {
             String texto;
             while ((texto = br.readLine()) != null) {
                 lineas.add(texto);
