@@ -3,7 +3,6 @@ package pkTrivia.pkArchivo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +13,7 @@ public class NumeroReader {
         String PathFile1 = "";
         String PathFile2 = "";
         System.out.println("Selecciona la Categoria: ");
-        System.out.println("1. ");
+        System.out.println("1. Constructores Java ");
         System.out.println("2. ");
         System.out.println("3.");
         System.out.println("4.");
@@ -23,8 +22,8 @@ public class NumeroReader {
 
         switch (opcion) {
             case 1:
-                PathFile1 = "File/preguntasNivel1.csv";
-                PathFile2 = "File/preguntasNivel1.csv";
+                PathFile1 = "File/constructores.csv";
+                PathFile2 = "File/anscontructores.csv";
             case 2:
                 PathFile1 = "File/preguntasNivel2.csv";
                 break;
