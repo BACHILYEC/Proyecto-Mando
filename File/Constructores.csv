@@ -1,0 +1,50 @@
+1) ¿Cuál es la función principal de un constructor?
+a. Ejecutar código estático
+b. Crear una copia del objeto
+c. Inicializar un objeto al momento de su creación
+d. Llamar a métodos privados
+2) ¿Qué característica debe tener el constructor?
+a. Debe ser static
+b. No debe tener nombre
+c. Debe tener el mismo nombre de la clase
+d. Debe devolver siempre un valor
+3) ¿Qué ocurre si no declaras ningún constructor en una clase?
+a. Se genera un error de compilación
+b. Se añade automáticamente uno sin parámetros
+c. Debes usar obligatoriamente uno con parámetros
+d. La clase se vuelve abstracta
+4) ¿Cuál de las siguientes opciones es verdadera sobre el constructor por defecto?
+a. Siempre debe ser privado
+b. Solo puede existir si se define manualmente
+c. No tiene parámetros y lo crea el lenguaje automáticamente
+d. No se puede usar para inicializar atributos
+5) ¿En qué situación es útil un constructor con parámetros?
+a. Cuando se quiere crear un objeto con valores iniciales específicos
+b. Cuando quieres evitar que se creen objetos
+c. Cuando necesitas ejecutar el programa sin main
+d. Cuando quieres crear múltiples clases al mismo tiempo
+6) ¿Cuál de las siguientes opciones describe la sobrecarga de constructores?
+a. Mismo nombre y diferentes parámetros
+b. Mismo nombre y mismos parámetros
+c. Un constructor que crea múltiples objetos a la vez
+d. Un constructor que llama automáticamente a otro método
+7) ¿Se puede llamar a un constructor desde otro constructor?
+a. No, no es posible
+b. Sí, usando super()
+c. Sí, usando this()
+d. Solo si el constructor tiene parámetros
+8) ¿Cuál de las siguientes afirmaciones es verdadera?
+a. Los constructores pueden devolver valores
+b. Un constructor puede ser final
+c. Los constructores pueden ser privados
+d. Los constructores siempre deben ser públicos
+9) ¿Qué palabra clave se usa para referirse al constructor de la clase base?
+a. base
+b. parent
+c. this
+d. super
+10) ¿Cuál es la forma correcta de declarar un constructor parametrizado?
+a. public void MiClase(int x)
+b. MiClase(int x)
+c. public MiClase(int x)
+d. constructor MiClase(int x)
