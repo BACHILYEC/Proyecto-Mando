@@ -7,7 +7,6 @@ public class Control {
     };
 
     public char MoveMenu() throws IOException {
-
         char[] opciones = { 'a', 'b', 'c', 'd' };
 
         int indice = 0; // posición inicial (a)
