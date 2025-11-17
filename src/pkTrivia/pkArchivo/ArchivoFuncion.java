@@ -9,37 +9,9 @@ import java.util.Scanner;
 import pkTrivia.pkJoystick.Control;
 
 public class ArchivoFuncion {
+    NumeroReader nr = new NumeroReader();
     Control control = new Control();
     Scanner sc = new Scanner(System.in);
-    // public String GetPathFile() {
-    // String PathFile = "";
-    // int opcion = sc.nextInt();
-    // switch (opcion) {
-    // case 1:
-    // PathFile = "File/preguntasNivel1.csv";
-    // case 2:
-    // PathFile = "File/preguntasNivel2.csv";
-    // break;
-
-    // default:
-    // break;
-    // }
-    // return PathFile;
-    // }
-
-    // public ArrayList<String> readFile(String pathFile) {
-
-    // ArrayList<String> lineas = new ArrayList<>();
-    // try (BufferedReader br = new BufferedReader(new FileReader(pathFile))) {
-    // String texto;
-    // while ((texto = br.readLine()) != null) {
-    // lineas.add(texto);
-    // }
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-    // return lineas;
-    // }
 
     public void showText(ArrayList<String> lineas) throws IOException {
         boolean lost = false;
@@ -50,7 +22,7 @@ public class ArchivoFuncion {
         nrolinea.add(15);
         for (int preguntas = 0; preguntas < 3; preguntas++) {
             if (!(lost)) {
-                int nroaleatorio = randomnumer(nrolinea);
+                int nroaleatorio = nr.randomnumer(nrolinea);
                 int options = nroaleatorio + 5;
                 for (int i = nroaleatorio; i < options; i++) {
                     System.out.println(lineas.get(i));
@@ -58,8 +30,8 @@ public class ArchivoFuncion {
                 int intento = 0;
                 while (intento < 2) {
                     // char respuesta = control.MoveMenu();
-                    ArrayList<String> respuestas = readFile("File/answers.csv");
-                    int indice = nroRespuestas(nroaleatorio);
+                    ArrayList<String> respuestas = nr.readFile("File/answers.csv");
+                    int indice = nr.nroRespuestas(nroaleatorio);
                     System.out.println(respuestas.get(indice));
                     System.out.println("Ingresa tu respuesta: ");
                     String respuesta = sc.nextLine();
@@ -83,16 +55,4 @@ public class ArchivoFuncion {
         }
         System.out.println("Fin del juego");
     }
-
-    // public int randomnumer(ArrayList<Integer> numeros) {
-    // int literal = (int) (Math.random() * numeros.size());
-    // int numero = numeros.get(literal);
-    // numeros.remove(literal);
-    // return numero;
-    // }
-
-    // public int nroRespuestas(int nroPregunta) {
-    // return nroPregunta / 5;
-    // }
-
 }
