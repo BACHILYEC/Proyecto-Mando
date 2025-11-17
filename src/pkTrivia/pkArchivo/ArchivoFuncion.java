@@ -26,19 +26,20 @@ public class ArchivoFuncion {
     // }
     // return PathFile;
     // }
-    public ArrayList<String> readFile(String pathFile) {
 
-        ArrayList<String> lineas = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(pathFile))) {
-            String texto;
-            while ((texto = br.readLine()) != null) {
-                lineas.add(texto);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return lineas;
-    }
+    // public ArrayList<String> readFile(String pathFile) {
+
+    // ArrayList<String> lineas = new ArrayList<>();
+    // try (BufferedReader br = new BufferedReader(new FileReader(pathFile))) {
+    // String texto;
+    // while ((texto = br.readLine()) != null) {
+    // lineas.add(texto);
+    // }
+    // } catch (IOException e) {
+    // e.printStackTrace();
+    // }
+    // return lineas;
+    // }
 
     public void showText(ArrayList<String> lineas) throws IOException {
         boolean lost = false;
@@ -83,15 +84,15 @@ public class ArchivoFuncion {
         System.out.println("Fin del juego");
     }
 
-    public int randomnumer(ArrayList<Integer> numeros) {
-        int literal = (int) (Math.random() * numeros.size());
-        int numero = numeros.get(literal);
-        numeros.remove(literal);
-        return numero;
-    }
+    // public int randomnumer(ArrayList<Integer> numeros) {
+    // int literal = (int) (Math.random() * numeros.size());
+    // int numero = numeros.get(literal);
+    // numeros.remove(literal);
+    // return numero;
+    // }
 
-    public int nroRespuestas(int nroPregunta) {
-        return nroPregunta / 5;
-    }
+    // public int nroRespuestas(int nroPregunta) {
+    // return nroPregunta / 5;
+    // }
 
 }
