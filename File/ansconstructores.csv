@@ -4,7 +4,7 @@ Se añade automáticamente uno sin parámetros
 No tiene parámetros y lo crea el lenguaje automáticamente
 Cuando se quiere crear un objeto con valores iniciales específicos
 Mismo nombre y diferentes parámetros
-Sí, usando this()
+Sí es posible usando this()
 Los constructores pueden ser privados
 super
 public MiClase(int x)

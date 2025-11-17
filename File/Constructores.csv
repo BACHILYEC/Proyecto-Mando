@@ -29,9 +29,9 @@ b. Mismo nombre y mismos parámetros
 c. Un constructor que crea múltiples objetos a la vez
 d. Un constructor que llama automáticamente a otro método
 7) ¿Se puede llamar a un constructor desde otro constructor?
-a. No, no es posible
-b. Sí, usando super()
-c. Sí, usando this()
+a. No es posible
+b. Sí es posible usando super()
+c. Sí es posible usando this()
 d. Solo si el constructor tiene parámetros
 8) ¿Cuál de las siguientes afirmaciones es verdadera?
 a. Los constructores pueden devolver valores
