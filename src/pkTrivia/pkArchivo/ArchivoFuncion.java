@@ -34,8 +34,13 @@ public class ArchivoFuncion {
             if (!(lost)) {
                 int nroaleatorio = nr.randomnumer(nrolinea);
                 int options = nroaleatorio + 5;
+                if(nroaleatorio == -1){
+                    System.out.println("Ganaste el juego");
+                    break;
+                }else{
                 for (int i = nroaleatorio; i < options; i++) {
                     System.out.println(lineas.get(i));
+                }   
             }
                 int intento = 0;
                 while (intento < 2) {
