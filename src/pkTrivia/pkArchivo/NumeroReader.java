@@ -67,10 +67,14 @@ public class NumeroReader {
     }
     
     public int randomnumer(ArrayList<Integer> numeros) {
-  int literal = (int) (Math.random() * numeros.size());
+        if(!numeros.isEmpty()){
+        int literal = (int) (Math.random() * numeros.size());
         int numero = numeros.get(literal);
         numeros.remove(literal);
         return numero;
+    } else {
+        return -1;
+    }
 }
     
     public int nroRespuestas(int nroPregunta) {
