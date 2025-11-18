@@ -13,7 +13,10 @@ public class ArchivoFuncion {
     Control control = new Control();
     Scanner sc = new Scanner(System.in);
 
-    public void showText(ArrayList<String> lineas) throws IOException {
+    private String answerPath;
+
+    public void showText(ArrayList<String> lineas, String AnsPath) throws IOException {
+        setAnswerPath(AnsPath);
         boolean lost = false;
         ArrayList<Integer> nrolinea = new ArrayList<>();
         nrolinea.add(0);
@@ -30,7 +33,7 @@ public class ArchivoFuncion {
                 int intento = 0;
                 while (intento < 2) {
                     // char respuesta = control.MoveMenu();
-                    ArrayList<String> respuestas = nr.readFile("File/answers.csv");
+                    ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
                     System.out.println(respuestas.get(indice));
                     System.out.println("Ingresa tu respuesta: ");
@@ -54,5 +57,13 @@ public class ArchivoFuncion {
             }
         }
         System.out.println("Fin del juego");
+    }
+    
+    public String getAnswerPath() {
+        return answerPath;
+    }
+    
+    public void setAnswerPath(String answerPath) {
+        this.answerPath = answerPath;
     }
 }
