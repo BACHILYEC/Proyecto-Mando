@@ -12,7 +12,6 @@ public class Controlador {
         ArchivoFuncion archivo = new ArchivoFuncion();
 
         nr.GetPathFile();
-        String pathFile = nr.getPathFile1();
-        archivo.showText(nr.readFile(pathFile), nr.getPathFile2());
+        archivo.showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
     }
 }
