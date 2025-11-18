@@ -7,36 +7,53 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NumeroReader {
+    
+    private int opcion;
+    private String PathFile1;
+    private String PathFile2;
+    
     Scanner sc = new Scanner(System.in);
-
+    
     public String GetPathFile() {
-        String PathFile1 = "";
-        String PathFile2 = "";
+        
         System.out.println("Selecciona la Categoria: ");
         System.out.println("1. Constructores Java ");
-        System.out.println("2. ");
-        System.out.println("3.");
-        System.out.println("4.");
-        System.out.println("5.");
-        int opcion = sc.nextInt();
-
-        switch (opcion) {
+        System.out.println("2. Paises");
+        System.out.println("3. Planetas");
+        System.out.println("4. Tema 4");
+        System.out.println("5. Tema5");
+        setOpcion(sc.nextInt());
+        
+        switch (getOpcion()) {
             case 1:
-                PathFile1 = "File/constructores.csv";
-                PathFile2 = "File/anscontructores.csv";
+            setPathFile1("File/constructores.csv");
+            setPathFile2("File/ansconstructores.csv");
+            break;
             case 2:
-                PathFile1 = "File/preguntasNivel2.csv";
-                break;
-
+            setPathFile1("File/prueba.csv");
+            setPathFile2("File/answers.csv");
+            break;
+            case 3:
+            setPathFile1("File/planetas.csv");
+            setPathFile2("File/ansPlanetas.csv");
+            break;
+            case 4:
+            setPathFile1("File/constructores.csv");
+            setPathFile2("File/ansconstructores.csv");
+            break;
+            case 5:
+            setPathFile1("File/constructores.csv");
+            setPathFile2("File/ansconstructores.csv");
+            break;
+            
             default:
-                break;
+            break;
         }
-        return PathFile1;
         return PathFile2;
     }
-
+    
     public ArrayList<String> readFile(String pathFile) {
-
+        
         ArrayList<String> lineas = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(pathFile))) {
             String texto;
@@ -48,16 +65,39 @@ public class NumeroReader {
         }
         return lineas;
     }
-
+    
     public int randomnumer(ArrayList<Integer> numeros) {
         int literal = (int) (Math.random() * numeros.size());
         int numero = numeros.get(literal);
         numeros.remove(literal);
         return numero;
     }
-
+    
     public int nroRespuestas(int nroPregunta) {
         return nroPregunta / 5;
     }
-
+    
+    public int getOpcion() {
+        return opcion;
+    }
+    
+    public void setOpcion(int opcion) {
+        this.opcion = opcion;
+    }
+    public String getPathFile1() {
+        return PathFile1;
+    }
+    
+    public void setPathFile1(String pathFile1) {
+        PathFile1 = pathFile1;
+    }
+    
+    public String getPathFile2() {
+        return PathFile2;
+    }
+    
+    public void setPathFile2(String pathFile2) {
+        PathFile2 = pathFile2;
+    }
+    
 }

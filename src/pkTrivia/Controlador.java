@@ -7,9 +7,12 @@ import pkTrivia.pkArchivo.NumeroReader;
 
 public class Controlador {
     public void IniciarTrivia() throws IOException {
-        ArchivoFuncion archivo = new ArchivoFuncion();
+        
         NumeroReader nr = new NumeroReader();
-        String pathFile = "File/prueba.csv";
-        archivo.showText(nr.readFile(pathFile));
+        ArchivoFuncion archivo = new ArchivoFuncion();
+
+        nr.GetPathFile();
+        String pathFile = nr.getPathFile1();
+        archivo.showText(nr.readFile(pathFile), nr.getPathFile2());
     }
 }
