@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import pkTrivia.pkJoystick.Control;
 
@@ -23,19 +24,24 @@ public class ArchivoFuncion {
         nrolinea.add(5);
         nrolinea.add(10);
         nrolinea.add(15);
-        for (int preguntas = 0; preguntas < 3; preguntas++) {
+        nrolinea.add(20);
+        nrolinea.add(25);
+        nrolinea.add(30);
+        nrolinea.add(35);
+        nrolinea.add(40);
+        nrolinea.add(45);
+        for (int preguntas = 0; preguntas <= 10; preguntas++) {
             if (!(lost)) {
                 int nroaleatorio = nr.randomnumer(nrolinea);
                 int options = nroaleatorio + 5;
                 for (int i = nroaleatorio; i < options; i++) {
                     System.out.println(lineas.get(i));
-                }
+            }
                 int intento = 0;
                 while (intento < 2) {
                     // char respuesta = control.MoveMenu();
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
-                    System.out.println(respuestas.get(indice));
                     System.out.println("Ingresa tu respuesta: ");
                     String respuesta = sc.nextLine();
                     if (respuesta.equals(respuestas.get(indice))) {
@@ -48,15 +54,16 @@ public class ArchivoFuncion {
                         } else {
                             System.out.println("Respuesta incorrecta, has agotado tus intentos");
                             lost = true;
+                            break;
                         }
                     }
                 }
-            } else {
-                System.out.println("Ganaste el juego");
-                break;
             }
+            else {
+                System.out.println("Has perdido el juego");
+                break;
         }
-        System.out.println("Fin del juego");
+    }
     }
     
     public String getAnswerPath() {

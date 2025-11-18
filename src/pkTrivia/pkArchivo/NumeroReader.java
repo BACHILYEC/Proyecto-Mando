@@ -20,8 +20,8 @@ public class NumeroReader {
         System.out.println("1. Constructores Java ");
         System.out.println("2. Paises");
         System.out.println("3. Planetas");
-        System.out.println("4. Tema 4");
-        System.out.println("5. Tema5");
+        System.out.println("4. Tipos de datos");
+        System.out.println("5. Electronica");
         setOpcion(sc.nextInt());
         
         switch (getOpcion()) {
@@ -38,12 +38,12 @@ public class NumeroReader {
             setPathFile2("File/ansPlanetas.csv");
             break;
             case 4:
-            setPathFile1("File/constructores.csv");
-            setPathFile2("File/ansconstructores.csv");
+            setPathFile1("File/tipodato.csv");
+            setPathFile2("File/anstipodato.csv");
             break;
             case 5:
-            setPathFile1("File/constructores.csv");
-            setPathFile2("File/ansconstructores.csv");
+            setPathFile1("File/electronica.csv");
+            setPathFile2("File/anselectronica.csv");
             break;
             
             default:
@@ -67,11 +67,15 @@ public class NumeroReader {
     }
     
     public int randomnumer(ArrayList<Integer> numeros) {
+        if(!numeros.isEmpty()){
         int literal = (int) (Math.random() * numeros.size());
         int numero = numeros.get(literal);
         numeros.remove(literal);
         return numero;
+    } else {
+        return -1;
     }
+}
     
     public int nroRespuestas(int nroPregunta) {
         return nroPregunta / 5;
