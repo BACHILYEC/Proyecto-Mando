@@ -11,17 +11,20 @@ public class NumeroReader {
     private int opcion;
     private String PathFile1;
     private String PathFile2;
+    final String ANSI_CYAN = "\u001B[36m";
+    final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_PURPLE = "\u001B[35m";
     
     Scanner sc = new Scanner(System.in);
     
     public String GetPathFile() {
-        
-        System.out.println("Selecciona la Categoria: ");
-        System.out.println("1. Constructores Java ");
+        System.out.println(ANSI_CYAN + "Bienvenido al juego de trivia!" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + "Selecciona la Categoria: " + ANSI_RESET);
+        System.out.println(ANSI_PURPLE + "1. Constructores Java ");
         System.out.println("2. Paises");
         System.out.println("3. Planetas");
         System.out.println("4. Tipos de datos");
-        System.out.println("5. Electronica");
+        System.out.println("5. Electronica" + ANSI_RESET);
         setOpcion(sc.nextInt());
         
         switch (getOpcion()) {
