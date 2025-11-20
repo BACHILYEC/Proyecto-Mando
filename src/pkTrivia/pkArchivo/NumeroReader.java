@@ -18,7 +18,7 @@ public class NumeroReader {
         
         System.out.println("Selecciona la Categoria: ");
         System.out.println("1. Constructores Java ");
-        System.out.println("2. Paises");
+        System.out.println("2. Cultura General");
         System.out.println("3. Planetas");
         System.out.println("4. Tipos de datos");
         System.out.println("5. Electronica");
@@ -30,8 +30,8 @@ public class NumeroReader {
             setPathFile2("File/ansconstructores.csv");
             break;
             case 2:
-            setPathFile1("File/prueba.csv");
-            setPathFile2("File/answers.csv");
+            setPathFile1("File/culturageneral.csv");
+            setPathFile2("File/ansculturageneral.csv");
             break;
             case 3:
             setPathFile1("File/planetas.csv");
