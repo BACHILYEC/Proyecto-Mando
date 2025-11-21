@@ -33,17 +33,13 @@ public class ArchivoFuncion {
                 if(nroaleatorio == -1){
                     System.out.println("Ganaste el juego");
                     break;
-                }else{
-                    for (int i = nroaleatorio; i < options; i++) {
-                        System.out.println(lineas.get(i));
-                    }   
                 }
                 int intento = 0;
                 while (intento < 2) {
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
                     System.out.println("Ingresa tu respuesta usando el joystick:");
-                    String respuesta = control.escribirConJoystick(); // <-- joystick input
+                    String respuesta = control.leerRespuestaConJoystick(nroaleatorio + 1, lineas);
                     if (respuesta.equals(respuestas.get(indice))) {
                         System.out.println("Respuesta correcta");
                         break;

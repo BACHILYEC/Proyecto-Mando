@@ -1,46 +1,75 @@
 package pkTrivia.pkJoystick;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Control {
 
-    private Scanner sc = new Scanner(System.in);
+    public String leerRespuestaConJoystick(int indice, ArrayList<String> opciones) {
+    
+    Scanner sc = new Scanner(System.in);
+    int seleccion = 0;
 
-    /**
-     * Simula la escritura con joystick, mostrando cada letra en consola.
-     */
-    public String escribirConJoystick() {
-        System.out.println("=== Modo Joystick ===");
-        System.out.println("Usa los siguientes números para simular botones:");
-        System.out.println("1 = Arriba (A), 2 = Abajo (B), 3 = Izquierda (C), 4 = Derecha (D), 5 = E, 6 = F, 7 = G, 8 = H, 9 = I");
-        System.out.println("0 = Enter (finalizar respuesta)");
-        System.out.println("Presiona los botones uno por uno. La letra aparecerá en pantalla:");
+    while (true) {
+        String clear = "\r" + " ".repeat(40) + "\r";
+        System.out.print(clear);
+        System.out.flush();
+        System.out.println("\nUsa W/S para mover y ENTER para escoger:\n");
+        System.out.println(opciones.get(indice - 1)); 
+        System.out.println((seleccion == 0 ? "> " : "  ") + opciones.get(indice));
+        System.out.println((seleccion == 1 ? "> " : "  ") + opciones.get(indice + 1));
+        System.out.println((seleccion == 2 ? "> " : "  ") + opciones.get(indice + 2));
+        System.out.println((seleccion == 3 ? "> " : "  ") + opciones.get(indice + 3));
 
-        StringBuilder respuesta = new StringBuilder();
-        while (true) {
-            int boton = sc.nextInt();
-            if (boton == 0) {
-                System.out.println(); // Salto de línea al finalizar
-                break;
-            }
-            char letra = 0;
-            switch (boton) {
-                case 1: letra = 'A'; break;
-                case 2: letra = 'B'; break;
-                case 3: letra = 'C'; break;
-                case 4: letra = 'D'; break;
-                case 5: letra = 'E'; break;
-                case 6: letra = 'F'; break;
-                case 7: letra = 'G'; break;
-                case 8: letra = 'H'; break;
-                case 9: letra = 'I'; break;
-                default: 
-                    System.out.println("Botón inválido, intenta de nuevo.");
-                    continue;
-            }
-            respuesta.append(letra);
-            System.out.print(letra); // Muestra la letra en consola como si fuera un teclado
+        String input = sc.nextLine();
+
+        if (input.equalsIgnoreCase("w")) {
+            seleccion--;
+            if (seleccion < 0) seleccion = 3;
         }
-        return respuesta.toString();
+        if (input.equalsIgnoreCase("s")) {
+            seleccion++;
+            if (seleccion > 3) seleccion = 0;
+        }
+        if (input.equals("")) { // Enter
+            System.out.println("Has seleccionado: " + opciones.get(indice + seleccion));
+            return opciones.get(indice + seleccion);
+        }
     }
+}
+
+public int leerCategoriaConJoystick() {
+    
+    Scanner sc = new Scanner(System.in);
+    int seleccion = 1;
+
+    while (true) {
+        String clear = "\r" + " ".repeat(40) + "\r";
+        System.out.print(clear);
+        System.out.flush();
+
+        System.out.println("Selecciona la Categoria:");
+        System.out.println("\nUsa W/S para mover y ENTER para escoger:\n");
+
+        System.out.println((seleccion == 1 ? "> " : "  ") + "1. Constructores Java ");
+        System.out.println((seleccion == 2 ? "> " : "  ") + "2. Paises");
+        System.out.println((seleccion == 3 ? "> " : "  ") + "3. Planetas");
+        System.out.println((seleccion == 4 ? "> " : "  ") + "4. Tipos de datos");
+        System.out.println((seleccion == 5 ? "> " : "  ") + "5. Electronica");
+
+        String input = sc.nextLine();
+
+        if (input.equalsIgnoreCase("w")) {
+            seleccion--;
+            if (seleccion < 1) seleccion = 5;
+        }
+        if (input.equalsIgnoreCase("s")) {
+            seleccion++;
+            if (seleccion > 5) seleccion = 1;
+        }
+        if (input.equals("")) { // Enter
+            return seleccion;
+        }
+    }
+}
 }

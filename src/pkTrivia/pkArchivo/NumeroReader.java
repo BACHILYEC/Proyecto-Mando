@@ -6,23 +6,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import pkTrivia.pkJoystick.Control;
+
 public class NumeroReader {
     
     private int opcion;
     private String PathFile1;
     private String PathFile2;
+
+    Control control = new Control();
     
     Scanner sc = new Scanner(System.in);
     
-    public String GetPathFile() {
+    public void GetPathFile() {
         
-        System.out.println("Selecciona la Categoria: ");
-        System.out.println("1. Constructores Java ");
-        System.out.println("2. Paises");
-        System.out.println("3. Planetas");
-        System.out.println("4. Tipos de datos");
-        System.out.println("5. Electronica");
-        setOpcion(sc.nextInt());
+        setOpcion(control.leerCategoriaConJoystick());
         
         switch (getOpcion()) {
             case 1:
@@ -49,7 +47,7 @@ public class NumeroReader {
             default:
             break;
         }
-        return PathFile2;
+        
     }
     
     public ArrayList<String> readFile(String pathFile) {
