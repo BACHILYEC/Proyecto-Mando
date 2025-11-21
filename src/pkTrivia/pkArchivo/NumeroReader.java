@@ -26,8 +26,8 @@ public class NumeroReader {
         
         switch (getOpcion()) {
             case 1:
-            setPathFile1("File/constructores.csv");
-            setPathFile2("File/ansconstructores.csv");
+            setPathFile1("File/disney.csv");
+            setPathFile2("File/ansdisney.csv");
             break;
             case 2:
             setPathFile1("File/culturageneral.csv");
