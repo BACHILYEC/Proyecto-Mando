@@ -6,11 +6,11 @@ import pkTrivia.pkArchivo.ArchivoFuncion;
 import pkTrivia.pkArchivo.NumeroReader;
 
 public class Controlador {
-    public void IniciarTrivia() throws IOException {
+    public void IniciarTrivia() throws IOException, InterruptedException {
         ArchivoFuncion archivo = new ArchivoFuncion();
         NumeroReader nr = new NumeroReader();
         nr.GetPathFile();
-        archivo.showText(nr.readFile(nr.getPathFile1()),nr.getPathFile2());
+        nr.carga();
+        archivo.showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
     }
 }
-
