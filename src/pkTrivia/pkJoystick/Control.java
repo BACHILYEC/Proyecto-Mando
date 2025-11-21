@@ -5,17 +5,27 @@ import java.util.Scanner;
 
 public class Control {
 
+    public int literal = 1;
+
+    public int getLiteral() {
+        return literal;
+    }
+
+    public void setLiteral(int literal) {
+        this.literal = literal;
+    }
+
     public String leerRespuestaConJoystick(int indice, ArrayList<String> opciones) {
 
         Scanner sc = new Scanner(System.in);
         int seleccion = 0;
         while (true) {
-            System.out.println("\nUsa W/S para mover y ENTER para escoger:\n");
-            System.out.println(opciones.get(indice - 1));
-            System.out.println((seleccion == 0 ? "> " : "  ") + opciones.get(indice));
-            System.out.println((seleccion == 1 ? "> " : "  ") + opciones.get(indice + 1));
-            System.out.println((seleccion == 2 ? "> " : "  ") + opciones.get(indice + 2));
-            System.out.println((seleccion == 3 ? "> " : "  ") + opciones.get(indice + 3));
+            System.out.println(literal + ") " + opciones.get(indice - 1));
+            System.out.println();
+            System.out.println((seleccion == 0 ? "> " : "  ") + "A) " + opciones.get(indice));
+            System.out.println((seleccion == 1 ? "> " : "  ") + "B) " + opciones.get(indice + 1));
+            System.out.println((seleccion == 2 ? "> " : "  ") + "C) " + opciones.get(indice + 2));
+            System.out.println((seleccion == 3 ? "> " : "  ") + "D) " + opciones.get(indice + 3));
 
             String input = sc.nextLine();
 
@@ -27,15 +37,12 @@ public class Control {
             if (input.equalsIgnoreCase("s")) {
                 seleccion++;
                 if (seleccion > 3)
+
                     seleccion = 0;
             }
-            if (input.equals("")) { // Enter
-                System.out.println("Has seleccionado: " + opciones.get(indice + seleccion));
+            if (input.equals("")) {
                 return opciones.get(indice + seleccion);
             }
-            String clear = "\r" + " ".repeat(40) + "\r";
-            System.out.print(clear);
-            System.out.flush();
         }
     }
 
@@ -43,10 +50,11 @@ public class Control {
 
         Scanner sc = new Scanner(System.in);
         int seleccion = 1;
+        System.out.println("Usa W/S para mover y ENTER para escoger:\n");
+        System.out.println("Ingresa tu respuesta usando el joystick:\n");
         while (true) {
 
             System.out.println("Selecciona la Categoria:");
-            System.out.println("\nUsa W/S para mover y ENTER para escoger:\n");
 
             System.out.println((seleccion == 1 ? "> " : "  ") + "1. Constructores Java ");
             System.out.println((seleccion == 2 ? "> " : "  ") + "2. Paises");
