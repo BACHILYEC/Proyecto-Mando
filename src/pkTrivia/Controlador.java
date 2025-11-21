@@ -10,7 +10,6 @@ public class Controlador {
         ArchivoFuncion archivo = new ArchivoFuncion();
         NumeroReader nr = new NumeroReader();
         nr.GetPathFile();
-        nr.carga();
         archivo.showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
     }
 }
