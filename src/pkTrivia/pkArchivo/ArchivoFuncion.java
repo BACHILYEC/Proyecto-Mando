@@ -1,4 +1,5 @@
 package pkTrivia.pkArchivo;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -30,21 +31,16 @@ public class ArchivoFuncion {
             if (!(lost)) {
                 int nroaleatorio = nr.randomnumer(nrolinea);
                 int options = nroaleatorio + 5;
-                if(nroaleatorio == -1){
+                if (nroaleatorio == -1) {
                     System.out.println("Ganaste el juego");
                     break;
-                }else{
-                for (int i = nroaleatorio; i < options; i++) {
-                    System.out.println(lineas.get(i));
-                }   
-            }
+                }
                 int intento = 0;
                 while (intento < 2) {
-                    // char respuesta = control.MoveMenu();
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
-                    System.out.println("Ingresa tu respuesta: ");
-                    String respuesta = sc.nextLine();
+                    String respuesta = control.leerRespuestaConJoystick(nroaleatorio + 1, lineas);
+                    control.setLiteral(control.getLiteral() + 1);
                     if (respuesta.equals(respuestas.get(indice))) {
                         System.out.println("Respuesta correcta");
                         break;
@@ -59,18 +55,17 @@ public class ArchivoFuncion {
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 System.out.println("Has perdido el juego");
                 break;
+            }
         }
     }
-    }
-    
+
     public String getAnswerPath() {
         return answerPath;
     }
-    
+
     public void setAnswerPath(String answerPath) {
         this.answerPath = answerPath;
     }
