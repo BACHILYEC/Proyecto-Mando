@@ -10,12 +10,12 @@ public class ArchivoFuncion {
     NumeroReader nr = new NumeroReader();
     Control control = new Control();
     Scanner sc = new Scanner(System.in);
-    final String ANSI_CYAN = "\u001B[36m";
-    final String ANSI_RESET = "\u001B[0m";
-    final String ANSI_RED = "\u001B[31m";
-    final String ANSI_YELLOW = "\u001B[33m";
-    final String ANSI_GREEN = "\u001B[32m";
-    final String ANSI_BLUE = "\u001B[34m";
+    String ANSI_CYAN = "\u001B[36m";
+    String ANSI_RESET = "\u001B[0m";
+    String ANSI_RED = "\u001B[31m";
+    String ANSI_YELLOW = "\u001B[33m";
+    String ANSI_GREEN = "\u001B[32m";
+    String ANSI_BLUE = "\u001B[34m";
 
     private String answerPath;
 
@@ -45,7 +45,6 @@ public class ArchivoFuncion {
                     for (int i = nroaleatorio; i < options; i++) {
                         if (i == nroaleatorio) {
                             System.out.println(ANSI_BLUE + lineas.get(i) + ANSI_RESET);
-                            System.out.println();
                         } else {
                             System.out.println(ANSI_YELLOW + lineas.get(i) + ANSI_RESET);
 
