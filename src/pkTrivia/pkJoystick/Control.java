@@ -56,8 +56,8 @@ public class Control {
 
             System.out.println("Selecciona la Categoria:");
 
-            System.out.println((seleccion == 1 ? "> " : "  ") + "1. Constructores Java ");
-            System.out.println((seleccion == 2 ? "> " : "  ") + "2. Paises");
+            System.out.println((seleccion == 1 ? "> " : "  ") + "1. Disney");
+            System.out.println((seleccion == 2 ? "> " : "  ") + "2. Cultura General");
             System.out.println((seleccion == 3 ? "> " : "  ") + "3. Planetas");
             System.out.println((seleccion == 4 ? "> " : "  ") + "4. Tipos de datos");
             System.out.println((seleccion == 5 ? "> " : "  ") + "5. Electronica");

@@ -28,14 +28,6 @@ public class NumeroReader {
 
         setOpcion(control.leerCategoriaConJoystick());
 
-        System.out.println("Selecciona la Categoria: ");
-        System.out.println("1. Constructores Java ");
-        System.out.println("2. Cultura General");
-        System.out.println("3. Planetas");
-        System.out.println("4. Tipos de datos");
-        System.out.println("5. Electronica");
-        setOpcion(sc.nextInt());
-
         switch (getOpcion()) {
             case 1:
                 setPathFile1("File/disney.csv");
