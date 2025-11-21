@@ -34,17 +34,16 @@ public class ArchivoFuncion {
                     System.out.println("Ganaste el juego");
                     break;
                 }else{
-                for (int i = nroaleatorio; i < options; i++) {
-                    System.out.println(lineas.get(i));
-                }   
-            }
+                    for (int i = nroaleatorio; i < options; i++) {
+                        System.out.println(lineas.get(i));
+                    }   
+                }
                 int intento = 0;
                 while (intento < 2) {
-                    // char respuesta = control.MoveMenu();
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
-                    System.out.println("Ingresa tu respuesta: ");
-                    String respuesta = sc.nextLine();
+                    System.out.println("Ingresa tu respuesta usando el joystick:");
+                    String respuesta = control.escribirConJoystick(); // <-- joystick input
                     if (respuesta.equals(respuestas.get(indice))) {
                         System.out.println("Respuesta correcta");
                         break;
@@ -63,8 +62,8 @@ public class ArchivoFuncion {
             else {
                 System.out.println("Has perdido el juego");
                 break;
+            }
         }
-    }
     }
     
     public String getAnswerPath() {

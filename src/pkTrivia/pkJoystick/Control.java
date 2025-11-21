@@ -1,78 +1,46 @@
 package pkTrivia.pkJoystick;
 
-import java.io.IOException;
+import java.util.Scanner;
 
 public class Control {
-    public Control() {
-    };
 
-    public char MoveMenu() throws IOException {
-        char[] opciones = { 'a', 'b', 'c', 'd' };
+    private Scanner sc = new Scanner(System.in);
 
-        int indice = 0; // posición inicial (a)
+    /**
+     * Simula la escritura con joystick, mostrando cada letra en consola.
+     */
+    public String escribirConJoystick() {
+        System.out.println("=== Modo Joystick ===");
+        System.out.println("Usa los siguientes números para simular botones:");
+        System.out.println("1 = Arriba (A), 2 = Abajo (B), 3 = Izquierda (C), 4 = Derecha (D), 5 = E, 6 = F, 7 = G, 8 = H, 9 = I");
+        System.out.println("0 = Enter (finalizar respuesta)");
+        System.out.println("Presiona los botones uno por uno. La letra aparecerá en pantalla:");
 
+        StringBuilder respuesta = new StringBuilder();
         while (true) {
-
-            limpiarPantalla();
-
-            System.out.println("=== TECLADO ===");
-
-            for (int i = 0; i < opciones.length; i++) {
-
-                if (i == indice) {
-
-                    System.out.print("[" + opciones[i] + "] "); // resaltada
-
-                } else {
-
-                    System.out.print(opciones[i] + " ");
-
-                }
-
+            int boton = sc.nextInt();
+            if (boton == 0) {
+                System.out.println(); // Salto de línea al finalizar
+                break;
             }
-
-            System.out.println("\n\nUse ← → para moverse y ENTER para seleccionar.");
-
-            int tecla = System.in.read();
-
-            // Códigos que generan las flechas
-
-            if (tecla == 27) { // ESC
-
-                System.in.read(); // [
-
-                int direccion = System.in.read(); // 68 o 67
-
-                if (direccion == 68) { // flecha izquierda
-
-                    indice = (indice - 1 + opciones.length) % opciones.length;
-
-                } else if (direccion == 67) { // flecha derecha
-
-                    indice = (indice + 1) % opciones.length;
-
-                }
-
+            char letra = 0;
+            switch (boton) {
+                case 1: letra = 'A'; break;
+                case 2: letra = 'B'; break;
+                case 3: letra = 'C'; break;
+                case 4: letra = 'D'; break;
+                case 5: letra = 'E'; break;
+                case 6: letra = 'F'; break;
+                case 7: letra = 'G'; break;
+                case 8: letra = 'H'; break;
+                case 9: letra = 'I'; break;
+                default: 
+                    System.out.println("Botón inválido, intenta de nuevo.");
+                    continue;
             }
-
-            // ENTER
-
-            else if (tecla == '\n' || tecla == '\r') {
-
-                return opciones[indice];
-
-            }
-
+            respuesta.append(letra);
+            System.out.print(letra); // Muestra la letra en consola como si fuera un teclado
         }
-
-    }
-    // Limpiar pantalla
-
-    public static void limpiarPantalla() {
-
-        System.out.print("\033[H\033[2J");
-
-        System.out.flush();
-
+        return respuesta.toString();
     }
 }
