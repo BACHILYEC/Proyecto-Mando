@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Control {
 
+    Scanner sc = new Scanner(System.in);
     public int literal = 1;
 
     public int getLiteral() {
@@ -17,7 +18,6 @@ public class Control {
 
     public String leerRespuestaConJoystick(int indice, ArrayList<String> opciones) {
 
-        Scanner sc = new Scanner(System.in);
         int seleccion = 0;
         while (true) {
             System.out.println(literal + ") " + opciones.get(indice - 1));
@@ -47,8 +47,6 @@ public class Control {
     }
 
     public int leerCategoriaConJoystick() {
-
-        Scanner sc = new Scanner(System.in);
         int seleccion = 1;
         System.out.println("Usa W/S para mover y ENTER para escoger:\n");
         System.out.println("Ingresa tu respuesta usando el joystick:\n");

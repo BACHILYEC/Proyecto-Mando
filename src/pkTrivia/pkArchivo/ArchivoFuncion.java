@@ -30,7 +30,6 @@ public class ArchivoFuncion {
         for (int preguntas = 0; preguntas <= 10; preguntas++) {
             if (!(lost)) {
                 int nroaleatorio = nr.randomnumer(nrolinea);
-                int options = nroaleatorio + 5;
                 if (nroaleatorio == -1) {
                     System.out.println("Ganaste el juego");
                     break;
