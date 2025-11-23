@@ -23,40 +23,21 @@ public class NumeroReader {
     Control control = new Control();
 
     Scanner sc = new Scanner(System.in);
-<<<<<<< HEAD
-    
-    public String GetPathFile() {
-        
-        System.out.println("Selecciona la Categoria: ");
-        System.out.println("1. Disney");
-        System.out.println("2. Cultura General");
-        System.out.println("3. Planetas");
-        System.out.println("4. Tipos de datos");
-        System.out.println("5. Electronica");
-        setOpcion(sc.nextInt());
-        
-=======
 
-    /**
-     * 
-     */
     public void GetPathFile() {
 
         setOpcion(control.leerCategoriaConJoystick());
 
->>>>>>> b3091567719c854d5fff6e0303fd9bb0e6c4d92e
         switch (getOpcion()) {
             case 1:
                 setPathFile1("File/disney.csv");
                 setPathFile2("File/ansdisney.csv");
                 break;
             case 2:
-
-            setPathFile1("File/culturageneral.csv");
-            setPathFile2("File/ansculturageneral.csv");
-            break;
-        case 3:
-        
+                setPathFile1("File/culturageneral.csv");
+                setPathFile2("File/ansculturageneral.csv");
+                break;
+            case 3:
                 setPathFile1("File/planetas.csv");
                 setPathFile2("File/ansPlanetas.csv");
                 break;
