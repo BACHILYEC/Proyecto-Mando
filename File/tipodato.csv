@@ -1,50 +1,50 @@
 ¿Cuál de los siguientes es un tipo de dato primitivo en Java?
-a) String
-b) Integer
-c) double
-d) Scanner
+String
+Integer
+double
+Scanner
 ¿Cuál es el tamaño en bits del tipo int en Java?
-a) 8 bits
-b) 16 bits
-c) 32 bits
-d) 64 bits
+8 bits
+16 bits
+32 bits
+64 bits
 ¿Cuál de los siguientes tipos se utiliza para representar un solo carácter?
-a) String
-b) char
-c) Character
-d) byte
+String
+char
+Character
+byte
 ¿Cuál es el valor por defecto de un boolean?
-a) true
-b) false
-c) 0
-d) null
+true
+false
+0
+null
 ¿Cuál tipo de dato permite almacenar números enteros más grandes que int?
-a) short
-b) byte
-c) long
-d) float
+short
+byte
+long
+float
 ¿Cuál de los siguientes es un tipo de dato de punto flotante?
-a) long
-b) float
-c) short
-d) boolean
+long
+float
+short
+boolean
 ¿Qué tipo de dato se usa para almacenar texto en Java?
-a) char[]
-b) String
-c) Character
-d) Text
+char[]
+String
+Character
+Text
 ¿Cuál de estos tipos NO es primitivo?
-a) boolean
-b) char
-c) double
-d) String
+boolean
+char
+double
+String
 ¿Qué tipo de dato usarías para almacenar el número 300?
-a) byte
-b) short
-c) int
-d) boolean
+byte
+short
+int
+boolean
 ¿Cuál es el valor mínimo que puede almacenar un byte?
-a) 0
-b) -128
-c) -255
-d) -32768
+0
+-128
+-255
+-32768

@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Control {
+    String amarillo = "\u001B[33m";
+    String blanco = "\u001B[0m";
+    String cyan = "\u001B[36m";
+    String azul = "\u001B[34m";
+    String morado = "\u001B[35m";
 
+    Scanner sc = new Scanner(System.in);
     public int literal = 1;
 
     public int getLiteral() {
@@ -17,15 +23,14 @@ public class Control {
 
     public String leerRespuestaConJoystick(int indice, ArrayList<String> opciones) {
 
-        Scanner sc = new Scanner(System.in);
         int seleccion = 0;
         while (true) {
-            System.out.println(literal + ") " + opciones.get(indice - 1));
+            System.out.println(azul + literal + ") " + opciones.get(indice - 1) + blanco);
             System.out.println();
-            System.out.println((seleccion == 0 ? "> " : "  ") + "A) " + opciones.get(indice));
-            System.out.println((seleccion == 1 ? "> " : "  ") + "B) " + opciones.get(indice + 1));
-            System.out.println((seleccion == 2 ? "> " : "  ") + "C) " + opciones.get(indice + 2));
-            System.out.println((seleccion == 3 ? "> " : "  ") + "D) " + opciones.get(indice + 3));
+            System.out.println((seleccion == 0 ? "> " : "  ") + morado + "A) " + blanco + opciones.get(indice));
+            System.out.println((seleccion == 1 ? "> " : "  ") + morado + "B) " + blanco + opciones.get(indice + 1));
+            System.out.println((seleccion == 2 ? "> " : "  ") + morado + "C) " + blanco + opciones.get(indice + 2));
+            System.out.println((seleccion == 3 ? "> " : "  ") + morado + "D) " + blanco + opciones.get(indice + 3));
 
             String input = sc.nextLine();
 
@@ -47,20 +52,18 @@ public class Control {
     }
 
     public int leerCategoriaConJoystick() {
-
-        Scanner sc = new Scanner(System.in);
         int seleccion = 1;
-        System.out.println("Usa W/S para mover y ENTER para escoger:\n");
-        System.out.println("Ingresa tu respuesta usando el joystick:\n");
+        System.out.println(cyan + "Usa W/S para mover y ENTER para escoger:\n");
+        System.out.println("Ingresa tu respuesta usando el joystick:\n" + blanco);
         while (true) {
 
-            System.out.println("Selecciona la Categoria:");
+            System.out.println(azul + "Selecciona la Categoria:"+ blanco);
 
-            System.out.println((seleccion == 1 ? "> " : "  ") + "1. Disney ");
-            System.out.println((seleccion == 2 ? "> " : "  ") + "2. Paises");
+            System.out.println(amarillo + (seleccion == 1 ? "> " : "  ") + "1. Disney");
+            System.out.println((seleccion == 2 ? "> " : "  ") + "2. Cultura General");
             System.out.println((seleccion == 3 ? "> " : "  ") + "3. Planetas");
             System.out.println((seleccion == 4 ? "> " : "  ") + "4. Tipos de datos");
-            System.out.println((seleccion == 5 ? "> " : "  ") + "5. Electronica");
+            System.out.println((seleccion == 5 ? "> " : "  ") + "5. Electronica" + blanco);
 
             String input = sc.nextLine();
 

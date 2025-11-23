@@ -2,14 +2,17 @@ package pkTrivia.pkArchivo;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import pkTrivia.pkJoystick.Control;
 
 public class ArchivoFuncion {
+    String blanco = "\u001B[0m";
+    String verde = "\u001B[32m";
+    String rojo = "\u001B[31m";
+    String naranja = "\u001B[38;2;255;165;0m";
+   
     NumeroReader nr = new NumeroReader();
     Control control = new Control();
-    Scanner sc = new Scanner(System.in);
 
     private String answerPath;
 
@@ -30,9 +33,8 @@ public class ArchivoFuncion {
         for (int preguntas = 0; preguntas <= 10; preguntas++) {
             if (!(lost)) {
                 int nroaleatorio = nr.randomnumer(nrolinea);
-                int options = nroaleatorio + 5;
                 if (nroaleatorio == -1) {
-                    System.out.println("Ganaste el juego");
+                    System.out.println(verde + "Ganaste el juego" + blanco);
                     break;
                 }
                 int intento = 0;
@@ -42,21 +44,21 @@ public class ArchivoFuncion {
                     String respuesta = control.leerRespuestaConJoystick(nroaleatorio + 1, lineas);
                     control.setLiteral(control.getLiteral() + 1);
                     if (respuesta.equals(respuestas.get(indice))) {
-                        System.out.println("Respuesta correcta");
+                        System.out.println(verde + "Respuesta correcta" + blanco);
                         break;
                     } else {
                         if (intento == 0) {
-                            System.out.println("Intenta de nuevo, te queda un intento");
+                            System.out.println(naranja + "Intenta de nuevo, te queda un intento" + blanco);
                             intento += 1;
                         } else {
-                            System.out.println("Respuesta incorrecta, has agotado tus intentos");
+                            System.out.println(rojo + "Respuesta incorrecta, has agotado tus intentos" + blanco);
                             lost = true;
                             break;
                         }
                     }
                 }
             } else {
-                System.out.println("Has perdido el juego");
+                System.out.println(rojo + "Has perdido el juego" + blanco);
                 break;
             }
         }

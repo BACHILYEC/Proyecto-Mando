@@ -5,8 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
-
 import pkTrivia.pkJoystick.Control;
 
 public class NumeroReader {
@@ -18,11 +16,11 @@ public class NumeroReader {
     String amarillo = "\u001B[33m";
     String azul = "\u001B[34m";
     String blanco = "\u001B[97m";
+    String cyan = "\u001B[36m";
+    String rojo = "\u001B[31m";
     Random random = new Random();
 
     Control control = new Control();
-
-    Scanner sc = new Scanner(System.in);
 
     public void GetPathFile() {
 
@@ -84,8 +82,8 @@ public class NumeroReader {
     public void carga() throws InterruptedException {
         int archivoRandom = random.nextInt(10, 50);
 
-        System.out.println("Descargando Preguntas ... " + archivoRandom + " mb: ");
-        System.out.print("[");
+        System.out.println(cyan + "Descargando Preguntas ... " + archivoRandom + " mb: ");
+        System.out.print("[" + blanco);
         for (int cargado = 0; cargado <= archivoRandom; cargado++) {
             Thread.sleep(100);
             int porcentaje = (int) ((cargado * 100.0) / archivoRandom);
@@ -94,13 +92,13 @@ public class NumeroReader {
                 color = amarillo;
             }
             if (porcentaje < 50) {
-                color = azul;
+                color = rojo;
             }
             String barra = "=".repeat(porcentaje / 5);
             System.out.print("\r" + color + "[" + barra + "> " + porcentaje + "%]" + blanco);
         }
         System.out.println();
-        System.out.println("");
+        System.out.println(azul + "");
     }
 
     public int nroRespuestas(int nroPregunta) {
