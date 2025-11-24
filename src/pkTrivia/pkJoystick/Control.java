@@ -51,17 +51,18 @@ public class Control {
             System.out.println((seleccion == 0 ? "> " : "  ") + "1. Volver a Jugar");
             System.out.println((seleccion == 1 ? "> " : "  ") + "2. Ver Marcador");
             System.out.println((seleccion == 2 ? "> " : "  ") + "3. Vaciar Marcador");
+            System.out.println((seleccion == 3 ? "> " : "  ") + "4. Salir");
 
             String input = sc.nextLine();
 
             if (input.equalsIgnoreCase("w")) {
                 seleccion--;
                 if (seleccion < 0)
-                    seleccion = 2;
+                    seleccion = 3;
             }
             if (input.equalsIgnoreCase("s")) {
                 seleccion++;
-                if (seleccion > 2)
+                if (seleccion > 3)
                     seleccion = 0;
             }
             if (input.equals("")) {

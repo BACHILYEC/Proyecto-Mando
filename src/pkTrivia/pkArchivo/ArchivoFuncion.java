@@ -9,6 +9,7 @@ import pkTrivia.pkJoystick.Control;
 public class ArchivoFuncion {
     NumeroReader nr = new NumeroReader();
     Control control = new Control();
+    tools tl = new tools();
     Scanner sc = new Scanner(System.in);
 
     private String answerPath;
@@ -18,7 +19,7 @@ public class ArchivoFuncion {
         switch (menu) {
             case 0: {
                 nr.GetPathFile();
-                nr.carga();
+                tl.carga();
                 showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
                 break;
             }
@@ -39,6 +40,10 @@ public class ArchivoFuncion {
                 menu();
                 break;
             }
+            case 3: {
+                System.out.println("Saliendo del juego...");
+                break;
+            }
 
         }
     }
@@ -48,7 +53,7 @@ public class ArchivoFuncion {
         switch (menu) {
             case 0: {
                 nr.GetPathFile();
-                nr.carga();
+                tl.carga();
                 showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
                 break;
             }
@@ -92,7 +97,7 @@ public class ArchivoFuncion {
         nrolinea.add(45);
         for (int preguntas = 0; preguntas <= 10; preguntas++) {
             if (!(lost)) {
-                int nroaleatorio = nr.randomnumer(nrolinea);
+                int nroaleatorio = tl.randomnumer(nrolinea);
                 if (nroaleatorio == -1) {
                     System.out.println("Ganaste el juego");
                     break;
@@ -125,8 +130,8 @@ public class ArchivoFuncion {
                 System.out.println();
                 System.out.println("Tu puntaje final es: " + score);
 
-                nr.carga();
-
+                tl.waitmenu();
+                System.out.println();
                 menuPostGame();
                 break;
             }
