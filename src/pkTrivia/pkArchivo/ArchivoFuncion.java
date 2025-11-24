@@ -84,6 +84,15 @@ public class ArchivoFuncion {
         int score = 0;
         System.out.print("Ingresa tu nombre: ");
         String name = sc.nextLine();
+        String espacio = "";
+        int diferencia = 8 - name.length();
+        if (diferencia > 0) {
+            espacio = " ".repeat(Math.round(diferencia / 2));
+        } else if (diferencia < 0) {
+            int quitar = Math.round((-diferencia) / 2);
+            espacio = " ".repeat(8 - quitar);
+        }
+        String player = "----- " + espacio + name + espacio + " ----- " + score;
         ArrayList<Integer> nrolinea = new ArrayList<>();
         nrolinea.add(0);
         nrolinea.add(5);
@@ -106,7 +115,6 @@ public class ArchivoFuncion {
                 while (intento < 2) {
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
-                    String player = "----- " + name + "----- " + score;
                     String respuesta = control.leerRespuestaConJoystick(nroaleatorio + 1, lineas);
                     control.setLiteral(control.getLiteral() + 1);
                     if (respuesta.equals(respuestas.get(indice))) {
