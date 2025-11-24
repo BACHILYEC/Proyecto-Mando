@@ -61,18 +61,15 @@ public class NumeroReader {
         return lineas;
     }
 
-    public ArrayList<String> writenull(String pathFile) {
-        ArrayList<String> lineas = new ArrayList<>();
+    public void writenull(String pathFile) {
+
         try (BufferedWriter br = new BufferedWriter(new FileWriter(pathFile))) {
             br.write("----- Marcador ----- Puntaje -----");
-            System.out.println();
-            System.out.println("Marcador Vacio");
             br.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return lineas;
     }
 
     public ArrayList<String> readFile(String pathFile) {
