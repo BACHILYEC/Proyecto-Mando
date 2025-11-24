@@ -61,7 +61,6 @@ public class NumeroReader {
     public ArrayList<String> writeusers(String pathFile, String usuario) {
         ArrayList<String> lineas = new ArrayList<>();
         try (BufferedWriter br = new BufferedWriter(new FileWriter(pathFile, true))) {
-            br.write("----- Marcador ----- Puntaje -----");
             br.write(usuario);
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,7 +71,7 @@ public class NumeroReader {
     public ArrayList<String> writenull(String pathFile) {
         ArrayList<String> lineas = new ArrayList<>();
         try (BufferedWriter br = new BufferedWriter(new FileWriter(pathFile))) {
-            br.write("");
+            br.write("----- Marcador ----- Puntaje ----- \n\nMarcador Vacio");
         } catch (IOException e) {
             e.printStackTrace();
         }

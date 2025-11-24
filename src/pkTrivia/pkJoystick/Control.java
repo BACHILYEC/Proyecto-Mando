@@ -43,6 +43,33 @@ public class Control {
         }
     }
 
+    public int readmenuPostGame() {
+
+        int seleccion = 0;
+        while (true) {
+            System.out.println("Selecciona una opcion:");
+            System.out.println((seleccion == 0 ? "> " : "  ") + "1. Volver a Jugar");
+            System.out.println((seleccion == 1 ? "> " : "  ") + "2. Ver Marcador");
+            System.out.println((seleccion == 2 ? "> " : "  ") + "3. Vaciar Marcador");
+
+            String input = sc.nextLine();
+
+            if (input.equalsIgnoreCase("w")) {
+                seleccion--;
+                if (seleccion < 0)
+                    seleccion = 2;
+            }
+            if (input.equalsIgnoreCase("s")) {
+                seleccion++;
+                if (seleccion > 2)
+                    seleccion = 0;
+            }
+            if (input.equals("")) {
+                return seleccion;
+            }
+        }
+    }
+
     public String leerRespuestaConJoystick(int indice, ArrayList<String> opciones) {
 
         int seleccion = 0;

@@ -20,6 +20,7 @@ public class ArchivoFuncion {
                 nr.GetPathFile();
                 nr.carga();
                 showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
+                break;
             }
             case 1: {
                 ArrayList<String> Mc = nr.readFile("File/Marcador.csv");
@@ -28,6 +29,7 @@ public class ArchivoFuncion {
                 }
                 System.out.println();
                 menu();
+                break;
             }
             case 2: {
                 nr.writenull("File/Marcador.csv");
@@ -35,14 +37,48 @@ public class ArchivoFuncion {
                 System.out.println("Marcador vaciado");
                 System.out.println();
                 menu();
+                break;
             }
 
         }
     }
 
-    public void showText(ArrayList<String> lineas, String AnsPath) throws IOException {
+    public void menuPostGame() throws IOException, InterruptedException {
+        int menu = control.readmenuPostGame();
+        switch (menu) {
+            case 0: {
+                nr.GetPathFile();
+                nr.carga();
+                showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
+                break;
+            }
+            case 1: {
+                ArrayList<String> Mc = nr.readFile("File/Marcador.csv");
+                for (int i = 0; i < Mc.size(); i++) {
+                    System.out.println(Mc.get(i));
+                }
+                System.out.println();
+                menu();
+                break;
+            }
+            case 2: {
+                nr.writenull("File/Marcador.csv");
+                System.out.println();
+                System.out.println("Marcador vaciado");
+                System.out.println();
+                menu();
+                break;
+            }
+
+        }
+    }
+
+    public void showText(ArrayList<String> lineas, String AnsPath) throws IOException, InterruptedException {
         setAnswerPath(AnsPath);
         boolean lost = false;
+        int score = 0;
+        System.out.print("Ingresa tu nombre: ");
+        String name = sc.nextLine();
         ArrayList<Integer> nrolinea = new ArrayList<>();
         nrolinea.add(0);
         nrolinea.add(5);
@@ -65,10 +101,12 @@ public class ArchivoFuncion {
                 while (intento < 2) {
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
+                    String player = "----- " + name + "----- " + score;
                     String respuesta = control.leerRespuestaConJoystick(nroaleatorio + 1, lineas);
                     control.setLiteral(control.getLiteral() + 1);
                     if (respuesta.equals(respuestas.get(indice))) {
                         System.out.println("Respuesta correcta");
+                        score++;
                         break;
                     } else {
                         if (intento == 0) {
@@ -76,6 +114,7 @@ public class ArchivoFuncion {
                             intento += 1;
                         } else {
                             System.out.println("Respuesta incorrecta, has agotado tus intentos");
+                            nr.writeusers("File/Marcador.csv", player);
                             lost = true;
                             break;
                         }
@@ -83,6 +122,12 @@ public class ArchivoFuncion {
                 }
             } else {
                 System.out.println("Has perdido el juego");
+                System.out.println();
+                System.out.println("Tu puntaje final es: " + score);
+
+                nr.carga();
+
+                menuPostGame();
                 break;
             }
         }
