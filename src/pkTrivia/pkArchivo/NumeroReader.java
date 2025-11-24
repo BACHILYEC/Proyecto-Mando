@@ -1,7 +1,9 @@
 package pkTrivia.pkArchivo;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -54,6 +56,27 @@ public class NumeroReader {
                 break;
         }
 
+    }
+
+    public ArrayList<String> writeusers(String pathFile, String usuario) {
+        ArrayList<String> lineas = new ArrayList<>();
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(pathFile, true))) {
+            br.write("----- Marcador ----- Puntaje -----");
+            br.write(usuario);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lineas;
+    }
+
+    public ArrayList<String> writenull(String pathFile) {
+        ArrayList<String> lineas = new ArrayList<>();
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(pathFile))) {
+            br.write("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lineas;
     }
 
     public ArrayList<String> readFile(String pathFile) {

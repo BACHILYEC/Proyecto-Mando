@@ -13,6 +13,33 @@ public class ArchivoFuncion {
 
     private String answerPath;
 
+    public void menu() throws IOException, InterruptedException {
+        int menu = control.readmenu();
+        switch (menu) {
+            case 0: {
+                nr.GetPathFile();
+                nr.carga();
+                showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
+            }
+            case 1: {
+                ArrayList<String> Mc = nr.readFile("File/Marcador.csv");
+                for (int i = 0; i < Mc.size(); i++) {
+                    System.out.println(Mc.get(i));
+                }
+                System.out.println();
+                menu();
+            }
+            case 2: {
+                nr.writenull("File/Marcador.csv");
+                System.out.println();
+                System.out.println("Marcador vaciado");
+                System.out.println();
+                menu();
+            }
+
+        }
+    }
+
     public void showText(ArrayList<String> lineas, String AnsPath) throws IOException {
         setAnswerPath(AnsPath);
         boolean lost = false;
