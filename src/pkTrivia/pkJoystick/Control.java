@@ -16,39 +16,12 @@ public class Control {
         this.literal = literal;
     }
 
-    public int readmenu() {
+    public int readmenu(String juego) {
 
         int seleccion = 0;
         while (true) {
             System.out.println("Selecciona una opcion:");
-            System.out.println((seleccion == 0 ? "> " : "  ") + "1. Iniciar Juego");
-            System.out.println((seleccion == 1 ? "> " : "  ") + "2. Ver Marcador");
-            System.out.println((seleccion == 2 ? "> " : "  ") + "3. Vaciar Marcador");
-
-            String input = sc.nextLine();
-
-            if (input.equalsIgnoreCase("w")) {
-                seleccion--;
-                if (seleccion < 0)
-                    seleccion = 2;
-            }
-            if (input.equalsIgnoreCase("s")) {
-                seleccion++;
-                if (seleccion > 2)
-                    seleccion = 0;
-            }
-            if (input.equals("")) {
-                return seleccion;
-            }
-        }
-    }
-
-    public int readmenuPostGame() {
-
-        int seleccion = 0;
-        while (true) {
-            System.out.println("Selecciona una opcion:");
-            System.out.println((seleccion == 0 ? "> " : "  ") + "1. Volver a Jugar");
+            System.out.println((seleccion == 0 ? "> " : "  ") + "1. " + juego);
             System.out.println((seleccion == 1 ? "> " : "  ") + "2. Ver Marcador");
             System.out.println((seleccion == 2 ? "> " : "  ") + "3. Vaciar Marcador");
             System.out.println((seleccion == 3 ? "> " : "  ") + "4. Salir");
@@ -112,7 +85,42 @@ public class Control {
             System.out.println((seleccion == 1 ? "> " : "  ") + "1. Disney");
             System.out.println((seleccion == 2 ? "> " : "  ") + "2. Cultura General");
             System.out.println((seleccion == 3 ? "> " : "  ") + "3. Planetas");
-            System.out.println((seleccion == 4 ? "> " : "  ") + "4. Tipos de datos");
+            System.out.println((seleccion == 4 ? "> " : "  ") + "4. Tipos de datos en Programacion");
+            System.out.println((seleccion == 5 ? "> " : "  ") + "5. Electronica");
+
+            String input = sc.nextLine();
+
+            if (input.equalsIgnoreCase("w")) {
+                seleccion--;
+                if (seleccion < 1)
+                    seleccion = 5;
+            }
+            if (input.equalsIgnoreCase("s")) {
+                seleccion++;
+                if (seleccion > 5)
+                    seleccion = 1;
+            }
+            if (input.equals("")) { // Enter
+                return seleccion;
+            }
+            String clear = "\r" + " ".repeat(40) + "\r";
+            System.out.print(clear);
+            System.out.flush();
+        }
+    }
+
+    public int leerPersonaje() {
+        int seleccion = 1;
+        System.out.println("Usa W/S para mover y ENTER para escoger:\n");
+        System.out.println("Ingresa tu respuesta usando el joystick:\n");
+        while (true) {
+
+            System.out.println("Selecciona la Categoria:");
+
+            System.out.println((seleccion == 1 ? "> " : "  ") + "1. Disney");
+            System.out.println((seleccion == 2 ? "> " : "  ") + "2. Cultura General");
+            System.out.println((seleccion == 3 ? "> " : "  ") + "3. Planetas");
+            System.out.println((seleccion == 4 ? "> " : "  ") + "4. Tipos de datos en Programacion");
             System.out.println((seleccion == 5 ? "> " : "  ") + "5. Electronica");
 
             String input = sc.nextLine();

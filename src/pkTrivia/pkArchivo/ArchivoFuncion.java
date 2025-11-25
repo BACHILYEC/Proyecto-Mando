@@ -9,15 +9,42 @@ import pkTrivia.pkJoystick.Control;
 public class ArchivoFuncion {
     NumeroReader nr = new NumeroReader();
     Control control = new Control();
-    tools tl = new tools();
+    Tool tl = new Tool();
     Scanner sc = new Scanner(System.in);
+    private int score;
+    // Neil Amstrong, Napoleon, Nikola Tesla, Pat_Mic, Peter pan
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 
     private String answerPath;
 
-    public void menu() throws IOException, InterruptedException {
-        int menu = control.readmenu();
+    public void menu(String juego) throws IOException, InterruptedException {
+        int menu = control.readmenu(juego);
         switch (menu) {
             case 0: {
+                if (getScore() > 0) {
+                    setScore(getScore());
+                    setName(getName());
+                } else {
+                    setScore(0);
+                    System.out.println("Ingresa tu nombre de jugador: ");
+                    setName(sc.nextLine());
+                }
                 nr.GetPathFile();
                 tl.carga();
                 showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
@@ -29,7 +56,7 @@ public class ArchivoFuncion {
                     System.out.println(Mc.get(i));
                 }
                 System.out.println();
-                menu();
+                menu(juego);
                 break;
             }
             case 2: {
@@ -37,41 +64,7 @@ public class ArchivoFuncion {
                 System.out.println();
                 System.out.println("Marcador vaciado");
                 System.out.println();
-                menu();
-                break;
-            }
-            case 3: {
-                System.out.println("Saliendo del juego...");
-                break;
-            }
-
-        }
-    }
-
-    public void menuPostGame() throws IOException, InterruptedException {
-        int menu = control.readmenuPostGame();
-        switch (menu) {
-            case 0: {
-                nr.GetPathFile();
-                tl.carga();
-                showText(nr.readFile(nr.getPathFile1()), nr.getPathFile2());
-                break;
-            }
-            case 1: {
-                ArrayList<String> Mc = nr.readFile("File/Marcador.csv");
-                for (int i = 0; i < Mc.size(); i++) {
-                    System.out.println(Mc.get(i));
-                }
-                System.out.println();
-                menu();
-                break;
-            }
-            case 2: {
-                nr.writenull("File/Marcador.csv");
-                System.out.println();
-                System.out.println("Marcador vaciado");
-                System.out.println();
-                menu();
+                menu(juego);
                 break;
             }
 
@@ -81,9 +74,6 @@ public class ArchivoFuncion {
     public void showText(ArrayList<String> lineas, String AnsPath) throws IOException, InterruptedException {
         setAnswerPath(AnsPath);
         boolean lost = false;
-        int score = 0;
-        System.out.print("Ingresa tu nombre: ");
-        String name = sc.nextLine();
         String espacio = "";
         int diferencia = 8 - name.length();
         if (diferencia > 0) {
@@ -92,7 +82,6 @@ public class ArchivoFuncion {
             int quitar = Math.round((-diferencia) / 2);
             espacio = " ".repeat(8 - quitar);
         }
-        String player = "----- " + espacio + name + espacio + " ----- " + score;
         ArrayList<Integer> nrolinea = new ArrayList<>();
         nrolinea.add(0);
         nrolinea.add(5);
@@ -105,14 +94,15 @@ public class ArchivoFuncion {
         nrolinea.add(40);
         nrolinea.add(45);
         for (int preguntas = 0; preguntas <= 10; preguntas++) {
+            int intento = 0;
             if (!(lost)) {
                 int nroaleatorio = tl.randomnumer(nrolinea);
                 if (nroaleatorio == -1) {
-                    System.out.println("Ganaste el juego");
-                    break;
+                    System.out.println("Ganaste la categoria");
+                    tl.waitmenu();
+                    menu("Volver a Jugar");
                 }
-                int intento = 0;
-                while (intento < 2) {
+                while (intento < 3) {
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
                     String respuesta = control.leerRespuestaConJoystick(nroaleatorio + 1, lineas);
@@ -122,11 +112,12 @@ public class ArchivoFuncion {
                         score++;
                         break;
                     } else {
-                        if (intento == 0) {
-                            System.out.println("Intenta de nuevo, te queda un intento");
+                        if (intento == 0 || intento == 1) {
+                            System.out.println("Intenta de nuevo");
                             intento += 1;
                         } else {
                             System.out.println("Respuesta incorrecta, has agotado tus intentos");
+                            String player = "----- " + espacio + name + espacio + " ----- " + score;
                             nr.writeusers("File/Marcador.csv", player);
                             lost = true;
                             break;
@@ -137,10 +128,8 @@ public class ArchivoFuncion {
                 System.out.println("Has perdido el juego");
                 System.out.println();
                 System.out.println("Tu puntaje final es: " + score);
-
-                tl.waitmenu();
                 System.out.println();
-                menuPostGame();
+
                 break;
             }
         }

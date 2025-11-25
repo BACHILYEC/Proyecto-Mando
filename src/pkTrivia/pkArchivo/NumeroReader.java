@@ -50,10 +50,42 @@ public class NumeroReader {
 
     }
 
-    public ArrayList<String> writeusers(String pathFile, String usuario) {
+    public void ChoosePlayer() {
+
+        setOpcion(control.leerPersonaje());
+
+        switch (getOpcion()) {
+            case 1:
+                setPathFile1("File/disney.csv");
+                setPathFile2("File/ansdisney.csv");
+                break;
+            case 2:
+                setPathFile1("File/culturageneral.csv");
+                setPathFile2("File/ansculturageneral.csv");
+                break;
+            case 3:
+                setPathFile1("File/planetas.csv");
+                setPathFile2("File/ansPlanetas.csv");
+                break;
+            case 4:
+                setPathFile1("File/tipodato.csv");
+                setPathFile2("File/anstipodato.csv");
+                break;
+            case 5:
+                setPathFile1("File/electronica.csv");
+                setPathFile2("File/anselectronica.csv");
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
+    public ArrayList<String> writeusers(String pathFile, String contenido) {
         ArrayList<String> lineas = new ArrayList<>();
         try (BufferedWriter br = new BufferedWriter(new FileWriter(pathFile, true))) {
-            br.write(usuario);
+            br.write(contenido);
             br.newLine();
         } catch (IOException e) {
             e.printStackTrace();

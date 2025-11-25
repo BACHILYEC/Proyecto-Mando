@@ -7,6 +7,6 @@ import pkTrivia.pkArchivo.ArchivoFuncion;
 public class Controlador {
     public void IniciarTrivia() throws IOException, InterruptedException {
         ArchivoFuncion af = new ArchivoFuncion();
-        af.menu();
+        af.menu("Iniciar Juego");
     }
 }

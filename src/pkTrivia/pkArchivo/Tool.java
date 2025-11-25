@@ -5,7 +5,7 @@ import java.util.Random;
 
 import pkTrivia.pkJoystick.Control;
 
-public class tools {
+public class Tool {
 
     String verde = "\u001B[32m";
     String amarillo = "\u001B[33m";
@@ -32,7 +32,7 @@ public class tools {
         System.out.println("Descargando Preguntas ... " + archivoRandom + " mb: ");
         System.out.print("[");
         for (int cargado = 0; cargado <= archivoRandom; cargado++) {
-            Thread.sleep(100);
+            Thread.sleep(80);
             int porcentaje = (int) ((cargado * 100.0) / archivoRandom);
             String color = verde;
             if (porcentaje < 80) {
