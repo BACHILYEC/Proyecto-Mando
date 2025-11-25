@@ -18,9 +18,37 @@ public class NumeroReader {
     Control control = new Control();
     Scanner sc = new Scanner(System.in);
 
-    public void GetPathFile() {
+    public int getOpcion() {
+        return opcion;
+    }
 
-        setOpcion(control.leerCategoriaConJoystick());
+    public void setOpcion(int opcion) {
+        this.opcion = opcion;
+    }
+
+    public String getPathFile1() {
+        return PathFile1;
+    }
+
+    public void setPathFile1(String pathFile1) {
+        PathFile1 = pathFile1;
+    }
+
+    public String getPathFile2() {
+        return PathFile2;
+    }
+
+    public void setPathFile2(String pathFile2) {
+        PathFile2 = pathFile2;
+    }
+
+    public int nroRespuestas(int nroPregunta) {
+        return nroPregunta / 5;
+    }
+
+    public void getPathFile() {
+
+        setOpcion(control.chooseCategory());
 
         switch (getOpcion()) {
             case 1:
@@ -50,7 +78,7 @@ public class NumeroReader {
 
     }
 
-    public void writeusers(String pathFile, String contenido) {
+    public void writeUsers(String pathFile, String contenido) {
 
         try (BufferedWriter br = new BufferedWriter(new FileWriter(pathFile, true))) {
             br.newLine();
@@ -60,7 +88,7 @@ public class NumeroReader {
         }
     }
 
-    public void writenull(String pathFile) {
+    public void writeNull(String pathFile) {
 
         try (BufferedWriter br = new BufferedWriter(new FileWriter(pathFile))) {
             br.write("Marcador,Puntaje");
@@ -96,7 +124,7 @@ public class NumeroReader {
     }
 
     public String ChoosePlayer() {
-        int playeroption = control.leerPersonaje();
+        int playeroption = control.choosePersonaje();
         String nombre = "";
         switch (playeroption) {
             case 1: {
@@ -124,34 +152,6 @@ public class NumeroReader {
                 break;
         }
         return nombre;
-    }
-
-    public int nroRespuestas(int nroPregunta) {
-        return nroPregunta / 5;
-    }
-
-    public int getOpcion() {
-        return opcion;
-    }
-
-    public void setOpcion(int opcion) {
-        this.opcion = opcion;
-    }
-
-    public String getPathFile1() {
-        return PathFile1;
-    }
-
-    public void setPathFile1(String pathFile1) {
-        PathFile1 = pathFile1;
-    }
-
-    public String getPathFile2() {
-        return PathFile2;
-    }
-
-    public void setPathFile2(String pathFile2) {
-        PathFile2 = pathFile2;
     }
 
 }

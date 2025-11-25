@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Control {
 
     Scanner sc = new Scanner(System.in);
-    public int literal = 1;
+    private int literal = 1;
 
     public int getLiteral() {
         return literal;
@@ -16,7 +16,7 @@ public class Control {
         this.literal = literal;
     }
 
-    public int readmenu(String juego) {
+    public int readMenu(String juego) {
 
         int seleccion = 0;
         while (true) {
@@ -44,7 +44,7 @@ public class Control {
         }
     }
 
-    public String leerRespuestaConJoystick(int indice, ArrayList<String> opciones) {
+    public String chooseAnswer(int indice, ArrayList<String> opciones) {
 
         int seleccion = 0;
         while (true) {
@@ -74,7 +74,7 @@ public class Control {
         }
     }
 
-    public int leerCategoriaConJoystick() {
+    public int chooseCategory() {
         int seleccion = 1;
         System.out.println("Ingresa tu respuesta usando el mando:\n");
         System.out.println("Usa flecha arriba/flecha abajo  y X para escoger:\n");
@@ -110,7 +110,7 @@ public class Control {
         }
     }
 
-    public int leerPersonaje() {
+    public int choosePersonaje() {
         int seleccion = 1;
         while (true) {
             System.out.println("Selecciona tu personaje: ");

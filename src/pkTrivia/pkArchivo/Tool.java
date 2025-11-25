@@ -7,15 +7,15 @@ import pkTrivia.pkJoystick.Control;
 
 public class Tool {
 
-    String verde = "\u001B[32m";
-    String amarillo = "\u001B[33m";
-    String azul = "\u001B[34m";
-    String blanco = "\u001B[97m";
+    private String verde = "\u001B[32m";
+    private String amarillo = "\u001B[33m";
+    private String azul = "\u001B[34m";
+    private String blanco = "\u001B[97m";
     Random random = new Random();
 
     Control control = new Control();
 
-    public int randomnumer(ArrayList<Integer> numeros) {
+    public int randomNumer(ArrayList<Integer> numeros) {
         if (!numeros.isEmpty()) {
             int literal = (int) (Math.random() * numeros.size());
             int numero = numeros.get(literal);
@@ -48,7 +48,7 @@ public class Tool {
         System.out.println("");
     }
 
-    public void waitmenu() throws InterruptedException {
+    public void waitMenu() throws InterruptedException {
         Random random = new Random();
         String verde = "\u001B[32m";
         String blanco = "\u001B[0m";
