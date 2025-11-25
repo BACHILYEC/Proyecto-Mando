@@ -12,7 +12,6 @@ public class ArchivoFuncion {
     Tool tl = new Tool();
     Scanner sc = new Scanner(System.in);
     private int score;
-    // Neil Amstrong, Napoleon, Nikola Tesla, Pat_Mic, Peter pan
     private String name;
 
     public String getName() {
@@ -42,8 +41,7 @@ public class ArchivoFuncion {
                     setName(getName());
                 } else {
                     setScore(0);
-                    System.out.println("Ingresa tu nombre de jugador: ");
-                    setName(sc.nextLine());
+                    setName(nr.ChoosePlayer());
                 }
                 nr.GetPathFile();
                 tl.carga();
@@ -51,10 +49,7 @@ public class ArchivoFuncion {
                 break;
             }
             case 1: {
-                ArrayList<String> Mc = nr.readFile("File/Marcador.csv");
-                for (int i = 0; i < Mc.size(); i++) {
-                    System.out.println(Mc.get(i));
-                }
+                nr.readScores();
                 System.out.println();
                 menu(juego);
                 break;
@@ -74,14 +69,6 @@ public class ArchivoFuncion {
     public void showText(ArrayList<String> lineas, String AnsPath) throws IOException, InterruptedException {
         setAnswerPath(AnsPath);
         boolean lost = false;
-        String espacio = "";
-        int diferencia = 8 - name.length();
-        if (diferencia > 0) {
-            espacio = " ".repeat(Math.round(diferencia / 2));
-        } else if (diferencia < 0) {
-            int quitar = Math.round((-diferencia) / 2);
-            espacio = " ".repeat(8 - quitar);
-        }
         ArrayList<Integer> nrolinea = new ArrayList<>();
         nrolinea.add(0);
         nrolinea.add(5);
@@ -105,10 +92,12 @@ public class ArchivoFuncion {
                 while (intento < 3) {
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
-                    String respuesta = control.leerRespuestaConJoystick(nroaleatorio + 1, lineas);
-                    control.setLiteral(control.getLiteral() + 1);
+                    System.out.println(getName());
+                    System.out.println("Puntaje: " + getScore());
+                    String respuesta = control.leerRespuestaConJoystick(nroaleatorio, lineas);
                     if (respuesta.equals(respuestas.get(indice))) {
                         System.out.println("Respuesta correcta");
+                        control.setLiteral(control.getLiteral() + 1);
                         score++;
                         break;
                     } else {
@@ -117,7 +106,7 @@ public class ArchivoFuncion {
                             intento += 1;
                         } else {
                             System.out.println("Respuesta incorrecta, has agotado tus intentos");
-                            String player = "----- " + espacio + name + espacio + " ----- " + score;
+                            String player = getName() + "," + getScore();
                             nr.writeusers("File/Marcador.csv", player);
                             lost = true;
                             break;
