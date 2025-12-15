@@ -75,19 +75,23 @@ public class Control {
     }
 
     public int chooseCategory() {
+        String celeste = "\u001B[36m";
+        String dorado = "\u001B[33m";
+        String cafe = "\u001B[35m";
+        String blanco = "\u001B[0m";
         int seleccion = 1;
-        System.out.println("Ingresa tu respuesta usando el mando:\n");
-        System.out.println("Usa flecha arriba/flecha abajo  y X para escoger:\n");
+        System.out.println(cafe + "Ingresa tu respuesta usando el mando:\n");
+        System.out.println("Usa flecha arriba/flecha abajo  y X para escoger:\n" + blanco);
 
         while (true) {
 
-            System.out.println("Selecciona la Categoria:");
+            System.out.println(celeste + "Selecciona la Categoria:" + dorado);
 
             System.out.println((seleccion == 1 ? "> " : "  ") + "1. Disney");
             System.out.println((seleccion == 2 ? "> " : "  ") + "2. Cultura General");
             System.out.println((seleccion == 3 ? "> " : "  ") + "3. Planetas");
             System.out.println((seleccion == 4 ? "> " : "  ") + "4. Tipos de datos en Programacion");
-            System.out.println((seleccion == 5 ? "> " : "  ") + "5. Electronica");
+            System.out.println((seleccion == 5 ? "> " : "  ") + "5. Electronica" + blanco);
 
             String input = sc.nextLine();
 

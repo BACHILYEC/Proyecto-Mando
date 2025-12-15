@@ -77,19 +77,27 @@ public class ArchivoFuncion {
 
     public void showText(ArrayList<String> lineas, String AnsPath) throws IOException, InterruptedException {
         setAnswerPath(AnsPath);
+        String verde = "\u001B[32m";
+        String rojo = "\u001B[31m";
+        String azul = "\u001B[34m";
+        String blanco = "\u001B[0m";
+        String naranja = "\u001B[33m";
+        String amarillo = "\u001B[33m";
         boolean lost = false;
         List<Integer> nrolinea = new ArrayList<>();
-        for (int i = 0; i <= 45; i += 5) {
-            nrolinea.add(i);
+        int nro = 0;
+        for (int i = 0; i < 10; i++) {
+            nrolinea.add(nro);
+            nro += 5;
         }
         for (int preguntas = 0; preguntas <= 10; preguntas++) {
             int intento = 0;
             if (!(lost)) {
                 int nroaleatorio = tl.randomNumer(nrolinea);
                 if (nroaleatorio == -1) {
-                    System.out.println("Ganaste la categoria");
+                    System.out.println(rojo + "Ganaste la categoria" + blanco);
                     tl.waitMenu();
-                    menu("Volver a Jugar");
+                    menu(amarillo + "Volver a Jugar" + blanco);
                 }
                 while (intento < 3) {
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
@@ -98,16 +106,16 @@ public class ArchivoFuncion {
                     System.out.println("Puntaje: " + getScore());
                     String respuesta = control.chooseAnswer(nroaleatorio, lineas);
                     if (respuesta.equals(respuestas.get(indice))) {
-                        System.out.println("Respuesta correcta");
+                        System.out.println(verde + "Respuesta correcta" + blanco);
                         control.setLiteral(control.getLiteral() + 1);
                         score++;
                         break;
                     } else {
                         if (intento == 0 || intento == 1) {
-                            System.out.println("Intenta de nuevo");
+                            System.out.println(rojo + "Intenta de nuevo" + blanco);
                             intento += 1;
                         } else {
-                            System.out.println("Respuesta incorrecta, has agotado tus intentos");
+                            System.out.println(rojo + "Respuesta incorrecta, has agotado tus intentos" + blanco);
                             String player = getName() + "," + getScore();
                             nr.writeUsers("File/Marcador.csv", player);
                             lost = true;
@@ -116,9 +124,9 @@ public class ArchivoFuncion {
                     }
                 }
             } else {
-                System.out.println("Has perdido el juego");
+                System.out.println(azul + "Has perdido el juego" + blanco);
                 System.out.println();
-                System.out.println("Tu puntaje final es: " + score);
+                System.out.println(naranja + "Tu puntaje final es: " + score + blanco);
                 System.out.println();
 
                 break;
