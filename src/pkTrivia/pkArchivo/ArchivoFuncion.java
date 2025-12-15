@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import pkTrivia.Utility;
 import pkTrivia.pkJoystick.Control;
 
 public class ArchivoFuncion {
     NumeroReader nr = new NumeroReader();
     Control control = new Control();
-    Tool tl = new Tool();
+    Utility tl = new Utility();
     Scanner sc = new Scanner(System.in);
     private int score;
     private String name;

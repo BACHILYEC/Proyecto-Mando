@@ -1,11 +1,10 @@
-package pkTrivia.pkArchivo;
+package pkTrivia;
 
 import java.util.List;
 import java.util.Random;
-
 import pkTrivia.pkJoystick.Control;
 
-public class Tool {
+public class Utility {
 
     private String verde = "\u001B[32m";
     private String amarillo = "\u001B[33m";
