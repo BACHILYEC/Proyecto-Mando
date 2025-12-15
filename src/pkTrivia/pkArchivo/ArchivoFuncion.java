@@ -2,6 +2,7 @@ package pkTrivia.pkArchivo;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import pkTrivia.pkJoystick.Control;
@@ -76,17 +77,10 @@ public class ArchivoFuncion {
     public void showText(ArrayList<String> lineas, String AnsPath) throws IOException, InterruptedException {
         setAnswerPath(AnsPath);
         boolean lost = false;
-        ArrayList<Integer> nrolinea = new ArrayList<>();
-        nrolinea.add(0);
-        nrolinea.add(5);
-        nrolinea.add(10);
-        nrolinea.add(15);
-        nrolinea.add(20);
-        nrolinea.add(25);
-        nrolinea.add(30);
-        nrolinea.add(35);
-        nrolinea.add(40);
-        nrolinea.add(45);
+        List<Integer> nrolinea = new ArrayList<>();
+        for (int i = 0; i <= 45; i += 5) {
+            nrolinea.add(i);
+        }
         for (int preguntas = 0; preguntas <= 10; preguntas++) {
             int intento = 0;
             if (!(lost)) {

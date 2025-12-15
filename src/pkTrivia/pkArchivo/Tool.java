@@ -1,6 +1,6 @@
 package pkTrivia.pkArchivo;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import pkTrivia.pkJoystick.Control;
@@ -15,7 +15,7 @@ public class Tool {
 
     Control control = new Control();
 
-    public int randomNumer(ArrayList<Integer> numeros) {
+    public int randomNumer(List<Integer> numeros) {
         if (!numeros.isEmpty()) {
             int literal = (int) (Math.random() * numeros.size());
             int numero = numeros.get(literal);
