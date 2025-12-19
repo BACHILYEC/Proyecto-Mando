@@ -142,4 +142,78 @@ public class Control {
             }
         }
     }
+
+    public String chooseName() {
+        String nombre = "";
+        int seleccionFila = 0;
+        int seleccionColumna = 0;
+        System.out.println("Usa el mando para seleccionar las letras y presiona X para confirmar cada letra.\n");
+        System.out.println("Presiona Hecho cuando hayas terminado de ingresar el nombre.\n");
+        System.out.println("Ingresa nombre del jugador: \n");
+        boolean Mayus = true;
+        while (true) {
+            String mayus = Mayus ? "Minusculas" : "Mayusculas";
+            String color = Mayus ? "\u001B[34m" : "\u001B[31m";
+            String Blanco = "\u001B[0m";
+            String[][] letras = { { "A", "B", "C", "D", "E", "F", "G", "H", "I", "Borrar" },
+                    { "J", "K", "L", "M", "N", "O", "P", "Q", "R", mayus },
+                    { "S", "T", "U", "V", "W", "X", "Y", "Z", "_", "Hecho" } };
+            for (int i = 0; i < letras.length; i++) {
+                for (int j = 0; j < letras[i].length; j++) {
+
+                    String prefijo = (i == seleccionFila && j == seleccionColumna) ? "> " : "  ";
+
+                    System.out.print(color + prefijo + letras[i][j] + "  " + Blanco);
+                }
+                System.out.println();
+            }
+
+            System.out.println("\n Nombre actual: " + nombre);
+            String input = sc.nextLine();
+            if (input.equalsIgnoreCase("w")) {
+                seleccionFila--;
+                if (seleccionFila < 0)
+                    seleccionFila = 2;
+            }
+            if (input.equalsIgnoreCase("s")) {
+                seleccionFila++;
+                if (seleccionFila > 2)
+                    seleccionFila = 0;
+            }
+            if (input.equalsIgnoreCase("a")) {
+                seleccionColumna--;
+                if (seleccionColumna < 0 && seleccionFila == 0)
+                    seleccionColumna = 9;
+            }
+            if (input.equalsIgnoreCase("d")) {
+                seleccionColumna++;
+                if (seleccionColumna > 9 && seleccionFila == 0)
+                    seleccionColumna = 0;
+            }
+            if (input.equals("")) {
+                String letraSeleccionada = letras[seleccionFila][seleccionColumna];
+                if (letraSeleccionada.equals("Hecho")) {
+                    return nombre;
+                } else if (letraSeleccionada.equals("Borrar")) {
+                    if (nombre.length() > 0) {
+                        nombre = nombre.substring(0, nombre.length() - 1);
+                    } else {
+                        nombre = "";
+                    }
+                } else if (letraSeleccionada.equals(mayus)) {
+                    Mayus = !Mayus;
+                } else if (letraSeleccionada.equals("_")) {
+                    nombre += " ";
+                } else {
+                    if (Mayus) {
+                        letraSeleccionada = letraSeleccionada.toUpperCase();
+                    } else {
+                        letraSeleccionada = letraSeleccionada.toLowerCase();
+                    }
+                    nombre += letraSeleccionada;
+                }
+            }
+
+        }
+    }
 }

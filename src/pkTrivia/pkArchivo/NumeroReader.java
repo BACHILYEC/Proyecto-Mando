@@ -81,9 +81,9 @@ public class NumeroReader {
     public void writeUsers(String pathFile, String contenido) {
 
         try (BufferedWriter br = new BufferedWriter(new FileWriter(pathFile, true))) {
-            br.newLine();
             br.write(contenido);
         } catch (IOException e) {
+
             e.printStackTrace();
         }
     }
@@ -123,35 +123,28 @@ public class NumeroReader {
 
     }
 
-    public String ChoosePlayer() {
-        int playeroption = control.choosePersonaje();
-        String nombre = "";
-        switch (playeroption) {
-            case 1: {
-                nombre = "Neil Amstrong";
-                break;
+    public void checkPlayer(String name, String pathFile, int score) {
+        boolean finded = false;
+        ArrayList<String> lineas = readFile("File/Marcador.csv");
+        for (int i = 1; i < lineas.size(); i++) {
+            String[] partes = lineas.get(i).split(",");
+            if (partes[0].equals(name)) {
+                partes[1] = Integer.toString(score);
+                lineas.set(i, partes[0] + "," + partes[1]);
+                writeNull(pathFile);
+                finded = true;
+                for (int j = 1; j < lineas.size(); j++) {
+                    writeUsers(pathFile, lineas.get(j));
+                }
             }
-
-            case 2: {
-                nombre = "Madame Curie";
-                break;
-            }
-            case 3: {
-                nombre = "Nikola Tesla";
-                break;
-            }
-            case 4: {
-                nombre = "Pat_Mic";
-                break;
-            }
-            case 5: {
-                nombre = "Peter Pan";
-                break;
-            }
-            default:
-                break;
         }
-        return nombre;
+        if (!finded) {
+            System.out.println("Nuevo jugador registrado: " + name);
+            String player = name + "," + score;
+            writeUsers(pathFile, "\n");
+            writeUsers(pathFile, player);
+        } else {
+            System.out.println("Puntaje actualizado para el jugador: " + name);
+        }
     }
-
 }

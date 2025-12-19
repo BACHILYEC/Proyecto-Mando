@@ -50,7 +50,7 @@ public class ArchivoFuncion {
                     setName(getName());
                 } else {
                     setScore(0);
-                    setName(nr.ChoosePlayer());
+                    setName(control.chooseName());
                 }
                 nr.getPathFile();
                 tl.carga();
@@ -71,8 +71,15 @@ public class ArchivoFuncion {
                 menu(juego);
                 break;
             }
-
+            case 3: {
+                System.out.println("Guardando partida...");
+                Thread.sleep(1000);
+                System.exit(0);
+                nr.checkPlayer(getName(), "File/Marcador.csv", getScore());
+                break;
+            }
         }
+
     }
 
     public void showText(ArrayList<String> lineas, String AnsPath) throws IOException, InterruptedException {
@@ -96,6 +103,7 @@ public class ArchivoFuncion {
                 int nroaleatorio = tl.randomNumer(nrolinea);
                 if (nroaleatorio == -1) {
                     System.out.println(rojo + "Ganaste la categoria" + blanco);
+                    nr.checkPlayer(getName(), "File/Marcador.csv", getScore());
                     tl.waitMenu();
                     menu(amarillo + "Volver a Jugar" + blanco);
                 }
@@ -116,19 +124,16 @@ public class ArchivoFuncion {
                             intento += 1;
                         } else {
                             System.out.println(rojo + "Respuesta incorrecta, has agotado tus intentos" + blanco);
-                            String player = getName() + "," + getScore();
-                            nr.writeUsers("File/Marcador.csv", player);
+                            nr.checkPlayer(getName(), "File/Marcador.csv", getScore());
                             lost = true;
                             break;
                         }
                     }
                 }
             } else {
-                System.out.println(azul + "Has perdido el juego" + blanco);
-                System.out.println();
-                System.out.println(naranja + "Tu puntaje final es: " + score + blanco);
-                System.out.println();
-
+                String mensajefinal = azul + "Has perdido el juego\n" + naranja + "Tu puntaje final es: " + score
+                        + blanco;
+                System.out.println(mensajefinal);
                 break;
             }
         }
