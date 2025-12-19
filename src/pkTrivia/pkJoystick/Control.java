@@ -211,9 +211,9 @@ public class Control {
                         letraSeleccionada = letraSeleccionada.toLowerCase();
                     }
                     nombre += letraSeleccionada;
+
                 }
             }
-
         }
     }
 }
