@@ -16,6 +16,12 @@ public class Control {
         this.literal = literal;
     }
 
+    public void clearLastLines(int lines) {
+        System.out.print("\033[" + lines + "F"); // sube N líneas
+        System.out.print("\033[J"); // borra desde cursor hasta abajo
+        System.out.flush();
+    }
+
     public int readMenu(String juego) {
 
         int seleccion = 0;
@@ -25,16 +31,17 @@ public class Control {
             System.out.println((seleccion == 1 ? "> " : "  ") + "2. Ver Marcador");
             System.out.println((seleccion == 2 ? "> " : "  ") + "3. Vaciar Marcador");
             System.out.println((seleccion == 3 ? "> " : "  ") + "4. Salir");
-
             String input = sc.nextLine();
 
             if (input.equalsIgnoreCase("w")) {
                 seleccion--;
+                clearLastLines(6);
                 if (seleccion < 0)
                     seleccion = 3;
             }
             if (input.equalsIgnoreCase("s")) {
                 seleccion++;
+                clearLastLines(6);
                 if (seleccion > 3)
                     seleccion = 0;
             }
@@ -59,11 +66,13 @@ public class Control {
 
             if (input.equalsIgnoreCase("w")) {
                 seleccion--;
+                clearLastLines(7);
                 if (seleccion < 0)
                     seleccion = 3;
             }
             if (input.equalsIgnoreCase("s")) {
                 seleccion++;
+                clearLastLines(7);
                 if (seleccion > 3)
 
                     seleccion = 0;
@@ -80,13 +89,11 @@ public class Control {
         String cafe = "\u001B[35m";
         String blanco = "\u001B[0m";
         int seleccion = 1;
-        System.out.println(cafe + "Ingresa tu respuesta usando el mando:\n");
-        System.out.println("Usa flecha arriba/flecha abajo  y X para escoger:\n" + blanco);
 
         while (true) {
-
+            System.out.println(cafe + "Ingresa tu respuesta usando el mando:\n");
+            System.out.println("Usa flecha arriba/flecha abajo  y X para escoger:\n" + blanco);
             System.out.println(celeste + "Selecciona la Categoria:" + dorado);
-
             System.out.println((seleccion == 1 ? "> " : "  ") + "1. Disney");
             System.out.println((seleccion == 2 ? "> " : "  ") + "2. Cultura General");
             System.out.println((seleccion == 3 ? "> " : "  ") + "3. Planetas");
@@ -97,43 +104,13 @@ public class Control {
 
             if (input.equalsIgnoreCase("w")) {
                 seleccion--;
+                clearLastLines(11);
                 if (seleccion < 1)
                     seleccion = 5;
             }
             if (input.equalsIgnoreCase("s")) {
                 seleccion++;
-                if (seleccion > 5)
-                    seleccion = 1;
-            }
-            if (input.equals("")) { // Enter
-                return seleccion;
-            }
-            String clear = "\r" + " ".repeat(40) + "\r";
-            System.out.print(clear);
-            System.out.flush();
-        }
-    }
-
-    public int choosePersonaje() {
-        int seleccion = 1;
-        while (true) {
-            System.out.println("Selecciona tu personaje: ");
-
-            System.out.println((seleccion == 1 ? "> " : "  ") + "1. Neil Amstrong");
-            System.out.println((seleccion == 2 ? "> " : "  ") + "2. Napoleon");
-            System.out.println((seleccion == 3 ? "> " : "  ") + "3. Nikola Tesla");
-            System.out.println((seleccion == 4 ? "> " : "  ") + "4. Pat_Mic");
-            System.out.println((seleccion == 5 ? "> " : "  ") + "5. Peter pan");
-
-            String input = sc.nextLine();
-
-            if (input.equalsIgnoreCase("w")) {
-                seleccion--;
-                if (seleccion < 1)
-                    seleccion = 5;
-            }
-            if (input.equalsIgnoreCase("s")) {
-                seleccion++;
+                clearLastLines(11);
                 if (seleccion > 5)
                     seleccion = 1;
             }
@@ -147,11 +124,11 @@ public class Control {
         String nombre = "";
         int seleccionFila = 0;
         int seleccionColumna = 0;
-        System.out.println("Usa el mando para seleccionar las letras y presiona X para confirmar cada letra.\n");
-        System.out.println("Presiona Hecho cuando hayas terminado de ingresar el nombre.\n");
-        System.out.println("Ingresa nombre del jugador: \n");
         boolean Mayus = true;
         while (true) {
+            System.out.println("Usa el mando para seleccionar las letras y presiona X para confirmar cada letra.\n");
+            System.out.println("Presiona Hecho cuando hayas terminado de ingresar el nombre.\n");
+            System.out.println("Ingresa nombre del jugador: \n");
             String mayus = Mayus ? "Minusculas" : "Mayusculas";
             String color = Mayus ? "\u001B[34m" : "\u001B[31m";
             String Blanco = "\u001B[0m";
@@ -159,6 +136,7 @@ public class Control {
                     { "J", "K", "L", "M", "N", "O", "P", "Q", "R", mayus },
                     { "S", "T", "U", "V", "W", "X", "Y", "Z", "_", "Hecho" } };
             for (int i = 0; i < letras.length; i++) {
+
                 for (int j = 0; j < letras[i].length; j++) {
 
                     String prefijo = (i == seleccionFila && j == seleccionColumna) ? "> " : "  ";
@@ -167,25 +145,28 @@ public class Control {
                 }
                 System.out.println();
             }
-
             System.out.println("\n Nombre actual: " + nombre);
             String input = sc.nextLine();
             if (input.equalsIgnoreCase("w")) {
+                clearLastLines(12);
                 seleccionFila--;
                 if (seleccionFila < 0)
                     seleccionFila = 2;
             }
             if (input.equalsIgnoreCase("s")) {
+                clearLastLines(12);
                 seleccionFila++;
                 if (seleccionFila > 2)
                     seleccionFila = 0;
             }
             if (input.equalsIgnoreCase("a")) {
+                clearLastLines(12);
                 seleccionColumna--;
                 if (seleccionColumna < 0 && seleccionFila == 0)
                     seleccionColumna = 9;
             }
             if (input.equalsIgnoreCase("d")) {
+                clearLastLines(12);
                 seleccionColumna++;
                 if (seleccionColumna > 9 && seleccionFila == 0)
                     seleccionColumna = 0;
@@ -195,16 +176,20 @@ public class Control {
                 if (letraSeleccionada.equals("Hecho")) {
                     return nombre;
                 } else if (letraSeleccionada.equals("Borrar")) {
+                    clearLastLines(12);
                     if (nombre.length() > 0) {
                         nombre = nombre.substring(0, nombre.length() - 1);
                     } else {
                         nombre = "";
                     }
                 } else if (letraSeleccionada.equals(mayus)) {
+                    clearLastLines(12);
                     Mayus = !Mayus;
                 } else if (letraSeleccionada.equals("_")) {
+                    clearLastLines(12);
                     nombre += " ";
                 } else {
+                    clearLastLines(12);
                     if (Mayus) {
                         letraSeleccionada = letraSeleccionada.toUpperCase();
                     } else {

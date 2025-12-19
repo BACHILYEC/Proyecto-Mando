@@ -110,7 +110,7 @@ public class ArchivoFuncion {
                 while (intento < 3) {
                     ArrayList<String> respuestas = nr.readFile(getAnswerPath());
                     int indice = nr.nroRespuestas(nroaleatorio);
-                    System.out.println(getName());
+                    System.out.println("Jugador: " + getName());
                     System.out.println("Puntaje: " + getScore());
                     String respuesta = control.chooseAnswer(nroaleatorio, lineas);
                     if (respuesta.equals(respuestas.get(indice))) {

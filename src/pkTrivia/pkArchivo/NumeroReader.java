@@ -141,8 +141,7 @@ public class NumeroReader {
         if (!finded) {
             System.out.println("Nuevo jugador registrado: " + name);
             String player = name + "," + score;
-            writeUsers(pathFile, "\n");
-            writeUsers(pathFile, player);
+            writeUsers(pathFile, player + "\n");
         } else {
             System.out.println("Puntaje actualizado para el jugador: " + name);
         }
